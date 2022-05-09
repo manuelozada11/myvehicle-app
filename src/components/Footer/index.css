@@ -1,0 +1,39 @@
+footer {
+    z-index: 10;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #212121;
+    border-radius: 1rem 1rem 0 0;
+    color: white;
+    font-size: 13px;
+}
+
+footer .footer-logo {
+    max-width: 150px;
+}
+
+footer h5 {
+    border-bottom: solid 1px #e9c200;
+}
+
+footer a {
+    text-decoration: none;
+}
+footer ul {
+    padding-left: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+footer ul a {
+    list-style: none;
+    text-decoration: none;
+    color: rgb(169, 169, 169);
+}
+footer ul a:hover {
+    color: #e9c200;
+    margin-left: 5px;
+    transition: 500ms;
+}
