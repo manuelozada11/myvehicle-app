@@ -8,14 +8,14 @@ const Home = () => {
         {
             title: 'Grandes momentos',
             subtitle: 'con el mínimo de atención',
-            url: '/src/public/img/home/home-main.jpg'
+            url: '/img/home/home-main.jpg'
         }
     ])
     const [carouselHomeSecond,] = useState([
         {
             title: '',
             subtitle: 'Desde las alturas, todo se ve mejor!',
-            url: '/src/public/img/home/home-drone2.jpg'
+            url: '/img/home/home-drone2.jpg'
         }
     ])
 
@@ -44,16 +44,16 @@ const Home = () => {
             <div className="container-fluid text-center">
                 <div className="row">
                     <div className="col-6 col-md-3 p-0">
-                        <img src="/src/public/img/home/home-webdev.jpg" alt="agavewebdev" width='100%' />
+                        <img src="/img/home/home-webdev.jpg" alt="agavewebdev" width='100%' />
                     </div>
                     <div className="col-6 col-md-3 p-0">
-                        <img src="/src/public/img/home/home-fotos.jpg" alt="agavefotos" width='100%' />
+                        <img src="/img/home/home-fotos.jpg" alt="agavefotos" width='100%' />
                     </div>
                     <div className="col-6 col-md-3 p-0">
-                        <img src="/src/public/img/home/home-video.jpg" alt="agavevideo" width='100%' />
+                        <img src="/img/home/home-video.jpg" alt="agavevideo" width='100%' />
                     </div>
                     <div className="col-6 col-md-3 p-0">
-                        <img src="/src/public/img/home/home-drone.jpg" alt="agavedrone" width='100%' />
+                        <img src="/img/home/home-drone.jpg" alt="agavedrone" width='100%' />
                     </div>
                 </div>
             </div>
@@ -80,7 +80,7 @@ const Home = () => {
             <div className="container-fluid home-py-xl">
                 <div className="row">
                     <div className="col-12 col-md-6 d-flex flex-column align-items-center justify-content-center">
-                        <img src="/src/public/img/home/home-manu.jpg" alt="manuelozada" className="rounded-circle border-ag-yellow" width={180} />
+                        <img src="/img/home/home-manu.jpg" alt="manuelozada" className="rounded-circle border-ag-yellow" width={180} />
                         <div className="text-center mb-3">
                             <h2 className="font-bebas mt-3">Manuel Lozada</h2>
                             <p className="fw-bolder">Web Developer <span className="text-warning">/</span> Videógrafo <span className="text-warning">/</span> Drone Pilot</p>
@@ -91,7 +91,7 @@ const Home = () => {
                         </div>
                     </div>
                     <div className="col-12 col-md-6 d-flex flex-column align-items-center justify-content-center">
-                        <img src="/src/public/img/home/home-luis.jpg" alt="luisalvarado" className="rounded-circle" width={180} />
+                        <img src="/img/home/home-luis.jpg" alt="luisalvarado" className="rounded-circle" width={180} />
                         <div className="text-center mb-3">
                             <h2 className="font-bebas mt-3">Luis Alvarado</h2>
                             <p className="fw-bolder">Fotógrafo <span className="text-warning">/</span> Videógrafo <span className="text-warning">/</span> Drone Pilot</p>

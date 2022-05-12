@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { AiOutlineClose, AiFillCamera, AiFillVideoCamera, AiFillMessage } from 'react-icons/ai'
 import { FaLaptopCode } from 'react-icons/fa'
 import { BsPersonBoundingBox } from 'react-icons/bs'
-import logo from '../../public/logo-black.png'
+import logo from '/logo-black.png'
 import AppContext from '../../contexts/app'
 import { scrollToTop } from '../../common/utils'
 

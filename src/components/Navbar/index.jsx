@@ -2,7 +2,7 @@ import './index.css'
 import { Link } from 'react-router-dom'
 import { AiOutlineMenu } from 'react-icons/ai'
 import { useContext } from 'react'
-import logo from '../../public/logo-white.png'
+import logo from '/logo-white.png'
 import AppContext from '../../contexts/app'
 import { scrollToTop } from '../../common/utils'
 

@@ -1,7 +1,7 @@
 import './index.css'
 import { Link } from 'react-router-dom'
 import {FaInstagram} from 'react-icons/fa'
-import logo from '../../public/logo512.png'
+import logo from '/logo512.png'
 import packageJson from '../../../package.json'
 import {scrollToTop} from '../../common/utils'
 
