@@ -4,6 +4,7 @@ import { AiOutlineMenu } from 'react-icons/ai'
 import { useContext } from 'react'
 import logo from '../../public/logo-white.png'
 import AppContext from '../../contexts/app'
+import { scrollToTop } from '../../common/utils'
 
 const options = [
     {
@@ -37,13 +38,13 @@ const Navbar = () => {
                     <AiOutlineMenu size={25} />
                 </div>
                 <ul className='d-flex flex-column'>
-                    { options.map((nav, index) => <Link key={`${index}${name}`} to={nav.to}>{`${nav.name}`}</Link>) }
+                    { options.map((nav, index) => <Link key={`${index}${name}`} onClick={() => scrollToTop(0)} to={nav.to}>{`${nav.name}`}</Link>) }
                 </ul>
             </div>
 
-            <Link to="/"><img src={logo} alt="agavemedia" width={200} /></Link>
+            <Link to="/" onClick={() => scrollToTop(0)}><img src={logo} alt="agavemedia" width={200} /></Link>
             <ul className='d-flex flex-row justify-content-end'>
-                { options.map((nav, index) => <Link key={`${index}${name}`} to={nav.to}>{`${nav.name}`}</Link>) }
+                { options.map((nav, index) => <Link key={`${index}${name}`} onClick={() => scrollToTop(0)} to={nav.to}>{`${nav.name}`}</Link>) }
             </ul>
         </nav>
     );
