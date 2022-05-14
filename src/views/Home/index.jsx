@@ -31,12 +31,12 @@ const Home = () => {
 
             <div className="container-fluid px-5 home-team">
                 <h1 className="mt-5 ms-4 font-bebas home-subtitle">
-                    hey, somos el <span className="text-warning">team</span> agavemedia
+                    hola, somos el <span className="text-warning">team</span> agavemedia
                 </h1>
 
                 <p className="mb-5 ms-4">
-                    Somos un equipo de jóvenes emprendedores y apasionados por lo que hacemos. 
-                    Desde más 5 años nos dedicamos a formar un equipo altamente capacitado para ofrecer servicios con la mejor calidad y con costos atractivos del mercado.
+                    Un equipo de jóvenes emprendedores y apasionados por lo que hacemos. 
+                    Desde hace más de 5 años nos dedicamos a formar un equipo altamente capacitado para ofrecer nuestros servicios con la mejor calidad.
                     Cada uno de los integrantes cuentan con una amplia trayectoria en sus especialidades, desde la fotografía y video hasta el atractivo mundo del desarrollo de aplicaciones.
                 </p>
             </div>
@@ -69,7 +69,7 @@ const Home = () => {
                         <div className="px-2">
                             Una de las cosas que nos inspiran es la cinematografía. 
                             Para nosotros cada uno de nuestros eventos, sesiones o desarrollos son una oportunidad más para contar tu historia a través de nuestra creatividad.
-                            Somos concientes lo importante que es ese momento para ti y es por eso que nosotros nos encargamos de que quede registrado para toda la vida <span className="fst-italic">(o al menos en tu instagram)</span>
+                            Somos conscientes de lo importante que es para ti ese momento y es por esto que nos enfocamos en documentar cada detalle para que puedas recordarlo toda la vida <span className="fst-italic">(o al menos en tu instagram)</span>
                         </div>
                     </div>
                 </div>

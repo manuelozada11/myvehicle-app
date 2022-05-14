@@ -1,5 +1,10 @@
 ## Versiones
 
+### (`1.1.2`) Mayo 11, 2022
+1. Se corrigió el bug de las imágenes (carousel) no se veia bien en celulares
+2. Se actualizaron las redacciones
+3. Se agrego el archivo para las redirecciones
+
 ### (`1.1.1`) Mayo 11, 2022
 1. Se corrigió el bug de las imágenes que no se veian en producción
 
