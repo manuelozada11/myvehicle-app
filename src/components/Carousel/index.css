@@ -56,6 +56,9 @@
       width: 800px;
       min-width: 900px;
     }
+    .carousel-item > .mid {
+      left: -250px;
+    }
   }
   
   @media (min-width: 575px) and (max-width: 945px) {

@@ -3,14 +3,19 @@ import Carousel from "../components/Carousel";
 import { FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import { FiMail } from 'react-icons/fi';
 
-import '../App.css';
-
-const style = {
-    titleFontSize: "4.5rem",
-    subtitleFontSize: "2.5rem",
-    fontFamily: "Bebas Neue",
-    textDecoration: "none",
-    colorPrimary: "#a9a9a9"
+import '../styles/App.css';
+const mainStyle = {
+    "titleFontSize": "4.5rem",
+    "subtitleFontSize": "3.5rem",
+    "thirdTitleFontSize": "2.5rem",
+    "fontFamily": "Bebas Neue",
+    "textDecoration": "none",
+    "colorPrimary": "#a9a9a9",
+    "colorSecundary": "#e9c200",
+    "colorThird": "#212121",
+    "colorPositive": "#fff",
+    "titleLineHeight": "4.5rem",
+    "subtitleLineHeight": "3.5rem"
 }
 
 const Contact = () => {
@@ -20,14 +25,14 @@ const Contact = () => {
             subtitle: 'siempre a tu alcance',
             url: '/img/contacto.jpg'
         }
-    ]);
+    ])
 
     return (
         <div className="container-fluid h-100 px-0">
             <Carousel infoCarouselImgs={ carouselContact } />
             
             <div className="container-fluid text-center px-5 pt-5">
-                <h1 style={{ fontSize: style.titleFontSize, fontFamily: style.fontFamily }}>
+                <h1 style={{ fontSize: mainStyle.titleFontSize, fontFamily: mainStyle.fontFamily, lineHeight: mainStyle.titleLineHeight }}>
                     ¿Alguna duda?
                 </h1>
             </div>

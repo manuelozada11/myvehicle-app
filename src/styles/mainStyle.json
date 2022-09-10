@@ -1,0 +1,13 @@
+{
+    "titleFontSize": "4.5rem",
+    "subtitleFontSize": "3.5rem",
+    "thirdTitleFontSize": "2.5rem",
+    "fontFamily": "Bebas Neue",
+    "textDecoration": "none",
+    "colorPrimary": "#a9a9a9",
+    "colorSecundary": "#e9c200",
+    "colorThird": "#212121",
+    "colorPositive": "#fff",
+    "titleLineHeight": "4.5rem",
+    "subtitleLineHeight": "3.5rem"
+}

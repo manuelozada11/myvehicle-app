@@ -15,7 +15,7 @@ const Carousel = ({ infoCarouselImgs }) => {
                 {
                     infoCarouselImgs?.map((carousel, index) => {
                         return <div className={"carousel-item " + (index === 0 ? "active" : "")} key={index}>
-                            <img id={ "myCarousel-" + (index + 1) } className="d-block imgCarousel" src={ carousel.url } alt={"slide" + (index + 1)} />
+                            <img id={ "myCarousel-" + (index + 1) } className={ `d-block imgCarousel ${ carousel.mid ? 'mid' : '' }` } src={ carousel.url } alt={"slide" + (index + 1)} />
                             <div className="carousel-caption text-center">
                                 <h3>{ carousel.title }</h3>
                                 <span className="carousel-text-subtitle">{ carousel.subtitle }</span>

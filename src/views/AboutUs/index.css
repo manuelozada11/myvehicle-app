@@ -1,0 +1,19 @@
+@media (max-width: 560px) {
+    .about-portrait {
+        max-height: 100%;
+        transition: 500ms;
+    }
+}
+
+@media (min-width: 560px) {
+    .about-portrait {
+        border-radius: 50%;
+        max-height: 20rem;
+        max-width: 20rem;
+        transition: 500ms;
+    }
+
+    .div-portrait {
+        padding: 4rem 0;
+    }
+}

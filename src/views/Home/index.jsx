@@ -15,7 +15,8 @@ const Home = () => {
         {
             title: '',
             subtitle: 'Desde las alturas, todo se ve mejor!',
-            url: '/img/home/home-drone2.jpg'
+            url: '/img/home/home-drone2.jpg',
+            mid: true
         }
     ])
 

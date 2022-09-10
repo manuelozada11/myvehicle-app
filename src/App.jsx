@@ -1,4 +1,3 @@
-import './App.css';
 import AppProvider from './contexts/app/Provider';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // components
@@ -10,9 +9,11 @@ import Home from './views/Home';
 // import Videos from './views/Videos'
 // import Photography from './views/Photography'
 // import WebDev from './views/WebDev'
-// import AboutUs from './views/AboutUs'
+import AboutUs from './views/AboutUs';
 import Contact from './views/Contact';
 // import Reviews from './views/Reviews'
+
+import './styles/App.css';
 
 const App = () => {
   return (
@@ -25,7 +26,7 @@ const App = () => {
           <Route path='videos' element={<Home />} />
           <Route path='fotos' element={<Home />} />
           <Route path='webs' element={<Home />} />
-          <Route path='nosotros' element={<Home />} />
+          <Route path='nosotros' element={<AboutUs />} />
           <Route path='contacto' element={<Contact />} />
           <Route path='clientes' element={<Home />} />
         </Routes>
