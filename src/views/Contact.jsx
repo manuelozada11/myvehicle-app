@@ -32,7 +32,7 @@ const Contact = () => {
             <Carousel infoCarouselImgs={ carouselContact } />
             
             <div className="container-fluid text-center px-5 pt-5">
-                <h1 style={{ fontSize: mainStyle.titleFontSize, fontFamily: mainStyle.fontFamily, lineHeight: mainStyle.titleLineHeight }}>
+                <h1 className="pt-5 pb-2" style={{ fontSize: mainStyle.titleFontSize, fontFamily: mainStyle.fontFamily, lineHeight: mainStyle.titleLineHeight }}>
                     ¿Alguna duda?
                 </h1>
             </div>
@@ -45,7 +45,7 @@ const Contact = () => {
                         y con gusto redirigimos tu mensaje.
                     </div>
 
-                    <div className="col-12 col-md-6 ps-md-5 pt-4 pt-md-0 text-left">
+                    <div className="col-12 col-md-6 pb-5 ps-md-5 pt-4 pt-md-0 text-left">
                         <div className="col-12 py-1"><FaInstagram size={30} className="me-2" /><a className="link" href="https://instagram.com/agavemedia">agavemedia</a></div>
                         <div className="col-12 py-1"><FaWhatsapp size={30} className="me-2" /><a className="link" href="https://wa.me/50762803490">PA (+507) 6280-3490</a></div>
                         <div className="col-12 py-1"><FaWhatsapp size={30} className="me-2" /><a className="link" href="https://wa.me/584145412173">VE (+58) 414-541 21 73</a></div>

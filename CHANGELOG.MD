@@ -1,6 +1,9 @@
 ## Versiones
 
-### (`1.2.0`) Mayo 11, 2022
+### (`1.2.1`) Septiembre 10, 2022
+1. Se corrigio el padding en la pagina de nosotros y contacto
+
+### (`1.2.0`) Septiembre 10, 2022
 1. Se agrego la pagina de contacto
 2. Se agrego la pagina de nosotros
 3. Se agrego la opcion inicio en el sidebar

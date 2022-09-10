@@ -40,7 +40,7 @@ const AboutUs = () => {
 
             <div className="container-fluid font-bebas p-5 text-center" 
                 style={{ fontSize: mainStyle.subtitleFontSize, lineHeight: mainStyle.subtitleLineHeight }}>
-                <p className='my-4'>Somos quiénes somos, porque <span style={{ color: mainStyle.colorSecundary }}>amamos</span> lo que hacemos</p>
+                <p className='py-5 my-5'>Somos quiénes somos, porque <span style={{ color: mainStyle.colorSecundary }}>amamos</span> lo que hacemos</p>
             </div>
 
             <div className='row mx-0 text-center div-portrait' style={{ backgroundColor: mainStyle.colorThird, color: mainStyle.colorPositive }}>
