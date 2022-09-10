@@ -13,3 +13,14 @@
 .agave-bg-dark {
     background-color: #212121;
 }
+
+/* Links */
+.link {
+    text-decoration: none;
+    color: #757575;
+}
+.link:hover {
+    color: #e9c200;
+    margin-left: 5px;
+    transition: 500ms;
+}

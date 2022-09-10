@@ -20,7 +20,7 @@ const Home = () => {
     ])
 
     return (
-        <div className="home container-fluid px-0">
+        <div className="container-fluid px-0">
             <Carousel infoCarouselImgs={ carouselHomeMain }/>
 
             <div className="container-fluid p-5 agave-bg-dark text-light text-center">
@@ -77,25 +77,25 @@ const Home = () => {
 
             <Carousel infoCarouselImgs={ carouselHomeSecond }/>
 
-            <div className="container-fluid home-py-xl">
+            <div className="container-fluid py-5">
                 <div className="row">
                     <div className="col-12 col-md-6 d-flex flex-column align-items-center justify-content-center">
                         <img src="/img/home/home-manu.jpg" alt="manuelozada" className="rounded-circle border-ag-yellow" width={180} />
                         <div className="text-center mb-3">
                             <h2 className="font-bebas mt-3">Manuel Lozada</h2>
                             <p className="fw-bolder">Web Developer <span className="text-warning">/</span> Videógrafo <span className="text-warning">/</span> Drone Pilot</p>
-                            <p>
+                            <p className="px-5 pb-4">
                                 Desde pequeño se enamoró por el mundo de la tecnología. Especialmente del desarrollo de aplicaciones.
                                 Además, su gran pasión siempre ha sido llevar el cine a cualquier evento donde participa haciendo magia con sus pequeños cortometrajes.
                             </p>
                         </div>
                     </div>
-                    <div className="col-12 col-md-6 d-flex flex-column align-items-center justify-content-center">
+                    <div className="col-12 col-md-6 d-flex flex-column align-items-center justify-content-start">
                         <img src="/img/home/home-luis.jpg" alt="luisalvarado" className="rounded-circle" width={180} />
                         <div className="text-center mb-3">
                             <h2 className="font-bebas mt-3">Luis Alvarado</h2>
                             <p className="fw-bolder">Fotógrafo <span className="text-warning">/</span> Videógrafo <span className="text-warning">/</span> Drone Pilot</p>
-                            <p>
+                            <p className="px-5">
                                 Gran personaje. En principio, te aseguramos que no pararás de reir en tu evento. Apasionado por lo que hace.
                                 Cuenta con una amplia trayectoria de más de 10 años en el mundo de la fotografía.
                                 En los últimos 5 años descubrió nuevos talentos ocultos, ¡ser piloto de drone y videógrafo!
