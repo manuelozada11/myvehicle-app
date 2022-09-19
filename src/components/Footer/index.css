@@ -2,18 +2,13 @@ footer {
     z-index: 10;
     position: relative;
     width: 100%;
-    background-color: #212121;
-    border-radius: 1rem 1rem 0 0;
+    background-color: #133930;
     color: white;
     font-size: 13px;
 }
 
 footer .footer-logo {
     max-width: 150px;
-}
-
-footer h5 {
-    border-bottom: solid 1px #e9c200;
 }
 
 footer a {
@@ -31,7 +26,7 @@ footer ul a, footer ul li {
     color: rgb(169, 169, 169);
 }
 footer ul a:hover {
-    color: #e9c200;
+    color: #00be92;
     margin-left: 5px;
     transition: 500ms;
 }

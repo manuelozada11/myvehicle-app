@@ -14,6 +14,10 @@
     background-color: #212121;
 }
 
+.color-primary {
+    color: #00d8a6;
+}
+
 /* Links */
 .link {
     text-decoration: none;

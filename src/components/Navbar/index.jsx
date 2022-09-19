@@ -6,31 +6,9 @@ import logo from '/logo-white.png'
 import AppContext from '../../contexts/app'
 import { scrollToTop } from '../../common/utils'
 
-const options = [
-    {
-        name: 'Fotos',
-        to: 'fotos'
-    },
-    {
-        name: 'Videos',
-        to: 'videos'
-    },
-    {
-        name: 'Webdev',
-        to: 'webs'
-    },
-    {
-        name: 'Nosotros',
-        to: 'nosotros'
-    },
-    {
-        name: 'Contacto',
-        to: 'contacto'
-    },
-]
-
 const Navbar = () => {
-    const appContext = useContext(AppContext)
+    const appContext = useContext(AppContext);
+
     return (
         <nav className="navbar shadow">
             <div className='navbar-mobile'>
@@ -38,13 +16,13 @@ const Navbar = () => {
                     <AiOutlineMenu size={25} />
                 </div>
                 <ul className='d-flex flex-column'>
-                    { options.map((nav, index) => <Link key={`${index}${name}`} onClick={() => scrollToTop(0)} to={nav.to}>{`${nav.name}`}</Link>) }
+                    <Link onClick={() => scrollToTop(0)} to='signin'>Iniciar sesión</Link>
                 </ul>
             </div>
 
             <Link to="/" onClick={() => scrollToTop(0)}><img src={logo} alt="agavemedia" width={200} /></Link>
             <ul className='d-flex flex-row justify-content-end'>
-                { options.map((nav, index) => <Link key={`${index}${name}`} onClick={() => scrollToTop(0)} to={nav.to}>{`${nav.name}`}</Link>) }
+                <Link onClick={() => scrollToTop(0)} to='signin'>Iniciar sesión</Link>
             </ul>
         </nav>
     );

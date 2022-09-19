@@ -3,19 +3,18 @@
     top: 0;
     left: 0;
     width: 15rem;
-    background-color: #e9c200;
+    background-color: #00be92;
     height: 100vh;
     z-index: 1000;
     display: none;
     transition: 650ms;
-    border-radius: 0 1rem 1rem 0;
 }
 
 .sidebar-close {
     position: fixed;
     top: 0;
     left: -15rem;
-    background-color: #e9c200;
+    background-color: #00be92;
     height: 100vh;
     z-index: 100;
     display: none;

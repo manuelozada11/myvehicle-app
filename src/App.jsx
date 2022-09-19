@@ -6,12 +6,7 @@ import Sidebar from './components/Sidebar';
 import Footer from './components/Footer';
 // views
 import Home from './views/Home';
-// import Videos from './views/Videos'
-// import Photography from './views/Photography'
-// import WebDev from './views/WebDev'
-import AboutUs from './views/AboutUs';
-import Contact from './views/Contact';
-// import Reviews from './views/Reviews'
+import Login from './views/Login';
 
 import './styles/App.css';
 
@@ -23,12 +18,7 @@ const App = () => {
         <Navbar />
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='videos' element={<Home />} />
-          <Route path='fotos' element={<Home />} />
-          <Route path='webs' element={<Home />} />
-          <Route path='nosotros' element={<AboutUs />} />
-          <Route path='contacto' element={<Contact />} />
-          <Route path='clientes' element={<Home />} />
+          <Route path='signin' element={<Login />} />
         </Routes>
         <Footer />
       </BrowserRouter>

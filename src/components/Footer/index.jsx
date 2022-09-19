@@ -16,27 +16,12 @@ const Footer = () => {
                             <p style={{ color: 'rgb(169 169 169)' }} >Copyright 2022 © v{packageJson.version} </p>
                         </Link>
                     </div>
-                    <div className='col-6 col-md-3 p-2'>
-                        <h5 className='pb-2'>Servicios</h5>
+
+                    <div className='col-6 col-md-9 p-2'>
+                        <h5 className='pb-2 color-primary'>Información</h5>
                         <ul>
-                            <Link to='webs' onClick={() => scrollToTop(0)}>Desarrollo Web</Link>
-                            <Link to='videos' onClick={() => scrollToTop(0)}>Videos</Link>
-                            <Link to='fotos' onClick={() => scrollToTop(0)}>Fotografías</Link>
-                        </ul>
-                    </div>
-                    <div className='col-6 col-md-3 p-2'>
-                        <h5 className='pb-2'>Nosotros</h5>
-                        <ul>
-                            <Link to='nosotros' onClick={() => scrollToTop(0)}>Sobre nosotros</Link>
-                            <Link to='nosotros' onClick={() => scrollToTop(0)}>Nuestra inspiración</Link>
-                        </ul>
-                    </div>
-                    <div className='col-6 col-md-3 p-2'>
-                        <h5 className='pb-2'>Contacto</h5>
-                        <ul>
-                            <li><FaInstagram size={15} /> agavemedia</li>
-                            <li>Panama City / Edo. Lara, Venezuela</li>
-                            <li><a href="mailto:agavemediave@gmail.com">agavemediave@gmail.com</a></li>
+                            <Link to='webs' onClick={() => scrollToTop(0)}>Sobre MyVehicle</Link>
+                            <Link to='videos' onClick={() => scrollToTop(0)}>Contacto</Link>
                         </ul>
                     </div>
                 </div>

@@ -18,8 +18,8 @@
     color: white;
 }
 .navbar ul a:hover {
-    color: #e9c200;
-    background-color: rgba(65, 54, 0, 0.136);
+    color: #00be92;
+    background-color: #00be920c;
     border-radius: 1rem;
     transition: 250ms;
 }
