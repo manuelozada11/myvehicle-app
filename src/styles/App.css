@@ -24,7 +24,7 @@
     color: #757575;
 }
 .link:hover {
-    color: #e9c200;
+    color: #00d8a6;
     margin-left: 5px;
     transition: 500ms;
 }
@@ -34,7 +34,105 @@
     color: #ffffff;
 }
 .link-positive:hover {
-    color: #e9c200;
+    color: #00d8a6;
     margin-left: 5px;
     transition: 500ms;
 }
+
+
+
+/*  ---- BUTTONS ---  */
+.card-custom {
+  background-color: #e4e4e4;
+  transition: 500ms;
+  cursor: pointer;
+  border-radius: 1.5rem;
+}
+.card-custom:hover {
+  background-color: #d2d2d2;
+  transition: 500ms;
+}
+
+
+/*  ---- BUTTONS ---  */
+/* FUCSIA */
+.btn-primary {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    background-color: #00d8a6;
+    border-color: #00d8a6;
+    color: #fff;
+  }
+  .btn-primary:hover {
+    background-color: #199578;
+    border-color: #199578;
+    color: #fff;
+  }
+  .btn-primary:focus{
+    box-shadow: 0 0 0 4px #c4f1e6;
+    background-color: #0e5b49;
+    border-color: #0e5b49;
+  }
+  .btn-primary:active {
+    background-color: #0e5b49;
+    border-color: #0e5b49;
+    box-shadow: 0 0 0 4px #c4f1e6;
+    color: #fff;
+  }
+  .btn-primary:active:focus {
+    box-shadow: 0 0 0 4px #c4f1e6;
+  }
+  .btn-primary:disabled {
+    background-color: #00d8a6;
+    border: none;
+  }
+  .btn-primary:disabled:hover {
+    background-color: #00d8a6;
+    border: none;
+  }
+  .btn-primary:disabled:active {
+    box-shadow: none;
+  }
+  
+  /* OUT LINE FUCSIA */
+  .btn-outline-primary {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    border-color: #00d8a6;
+    background-color: #FFF;
+    color: #00d8a6;
+  }
+  .btn-outline-primary:hover {
+    background-color: #00d8a6;
+    border-color: #00d8a6;
+    color: #fff;
+  }
+  .btn-outline-primary:focus {
+    box-shadow: 0 0 0 4px #c4f1e6;
+    color: #00d8a6;
+  }
+  .btn-outline-primary:active {
+    background-color: #0e5b49;
+    border-color: #0e5b49;
+  }
+  .btn-outline-primary:active:focus {
+    box-shadow: 0 0 0 4px #c4f1e6;
+  }
+  .btn-outline-primary:focus:hover {
+    color: #fff;
+  }
+  .btn-outline-primary:disabled {
+    border-color: #00d8a6;
+    background-color: #FFF;
+    color: #00d8a6;
+  }
+  .btn-outline-primary:disabled:hover {
+    border-color: #00d8a6;
+    background-color: #FFF;
+    color: #00d8a6;
+  }
+  .btn-outline-primary:disabled:active {
+    box-shadow: none;
+  }

@@ -5,15 +5,23 @@ import { AiOutlineClose, AiFillHome } from 'react-icons/ai';
 import { FaUser } from 'react-icons/fa';
 import logo from '/logo-black.png';
 import AppContext from '../../contexts/app';
-import { scrollToTop } from '../../common/utils';
+import { getStorageValue, removeItemStorage, scrollToTop } from '../../common/utils';
 
 const Sidebar = () => {
     const appContext = useContext(AppContext);
 
+    const onSignOut = () => { 
+        appContext.setIsOpenSidebar(false); 
+        scrollToTop(0);
+        removeItemStorage('user');
+        removeItemStorage('token');
+    }
+
     return (
         <div className={`shadow d-flex flex-column justify-content-center sidebar sidebar-${appContext.isOpenSidebar ? 'open' : 'close'}`}>
             <div className='p-4 mb-auto d-flex justify-content-between'>
-                <Link to='/' onClick={() => { appContext.setIsOpenSidebar(false); scrollToTop(0); }}><img src={logo} alt="agavemedia-icon" width={150}/></Link>
+                <h1 className='fw-bold p-0'>MVApp</h1>
+                {/* <Link to='/' onClick={() => { appContext.setIsOpenSidebar(false); scrollToTop(0); }}><img src={logo} alt="agavemedia-icon" width={150}/></Link> */}
                 <AiOutlineClose size={25} onClick={() => appContext.setIsOpenSidebar(false)}/> 
             </div>
 
@@ -23,10 +31,16 @@ const Sidebar = () => {
                     <h5 className='mx-3'>Inicio</h5>
                 </Link>
 
-                <Link onClick={() => { appContext.setIsOpenSidebar(false); scrollToTop(0); }} to='signin' className='py-3 d-flex flex-inline'>
-                    <FaUser color='black' size={25} />
-                    <h5 className='mx-3'>Iniciar sesión</h5>
-                </Link>
+                { getStorageValue('token')
+                    ? <Link onClick={ onSignOut } to='' className='py-3 d-flex flex-inline'>
+                        <FaUser color='black' size={25} />
+                        <h5 className='mx-3'>Cerrar sesión</h5>
+                    </Link>
+                    : <Link onClick={() => { appContext.setIsOpenSidebar(false); scrollToTop(0); }} to='signin' className='py-3 d-flex flex-inline'>
+                        <FaUser color='black' size={25} />
+                        <h5 className='mx-3'>Iniciar sesión</h5>
+                    </Link>
+                }
             </ul>
 
             <div className='p-4 mt-auto text-center' style={{ fontSize: 15 }}>

@@ -2,7 +2,6 @@
     position: sticky;
     top: 0;
     width: 100%;
-    background-color: #212121;
     padding: 0;
     z-index: 100;
 }
@@ -15,11 +14,14 @@
 .navbar ul a {
     padding: 1rem;
     text-decoration: none;
-    color: white;
+    color: #00be92;
+    background-color: #00be921e;
+    border-radius: 1rem;
+    transition: 250ms;
 }
 .navbar ul a:hover {
     color: #00be92;
-    background-color: #00be920c;
+    background-color: #00be9244;
     border-radius: 1rem;
     transition: 250ms;
 }
@@ -36,15 +38,15 @@
 
 .icon-menu {
     border-radius: 50%;
-    border: solid 1px white;
+    border: solid 1px #686868;
     margin-left: 0.5rem;
     padding: 0.3rem;
-    color: #fff;
+    color: #686868;
     cursor: pointer;
 }
 .icon-menu:hover {
     color: #000;
-    background-color: #fff;
+    background-color: #2b2b2b;
 }
 
 /* Mobile */
