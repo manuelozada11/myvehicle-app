@@ -9,7 +9,6 @@ import { firstLetterUppercase, getStorageValue, scrollToTop, removeItemStorage }
 const UserHome = () => {
     let navigate = useNavigate();
     const { getVehiclesByUser } = useVehicle();
-
     const [cars, setCars] = useState(null);
     const [user,] = useState(getStorageValue('user'));
 
@@ -18,6 +17,10 @@ const UserHome = () => {
         removeItemStorage('user');
         removeItemStorage('token');
         navigate('/');
+    }
+
+    const onAddVehicle = async () => {
+        navigate('/vehicle/add');
     }
 
     useEffect(() => {
@@ -36,11 +39,11 @@ const UserHome = () => {
         <div className="container-fluid px-0">
             <div className="px-4 py-2">
                 <p className="mb-2 mt-3">Hola, { user ? firstLetterUppercase(user.name) : 'user' }!</p>
-                <h1 className="fw-bolder">Tus carros</h1>
+                <h1 className="fw-bolder">Tus vehiculos</h1>
             </div>
 
             <div className="container-fluid d-flex justify-content-center pb-2">
-                <button type="button" className="btn btn-outline-primary rounded-pill m-2">Agregar</button>
+                <button type="button" onClick={ onAddVehicle } className="btn btn-outline-primary rounded-pill m-2">Agregar</button>
                 <button type="button" onClick={ onGoHome } className="btn btn-primary rounded-pill m-2">Salir</button>
             </div>
 

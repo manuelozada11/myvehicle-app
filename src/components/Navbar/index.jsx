@@ -1,14 +1,12 @@
 import './index.css'
 import { Link } from 'react-router-dom'
 import { AiOutlineMenu } from 'react-icons/ai'
-import { useContext } from 'react'
 import logo from '/logo-white.png'
-import AppContext from '../../contexts/app'
-import { getStorageValue, removeItemStorage, scrollToTop } from '../../common/utils'
-import { useEffect } from 'react'
+import { useAuth } from '../../hooks/useAuth';
+import { getStorageValue, removeItemStorage, scrollToTop } from '../../common/utils';
 
 const Navbar = () => {
-    const appContext = useContext(AppContext);
+    const { setIsOpenSidebar } = useAuth();
 
     const onSignOut = () => {
         scrollToTop(0);
@@ -19,7 +17,7 @@ const Navbar = () => {
     return (
         <nav className="navbar">
             <div className='navbar-mobile'>
-                <div className='icon-menu' onClick={() => appContext.setIsOpenSidebar(true)}>
+                <div className='icon-menu' onClick={() => setIsOpenSidebar(true)}>
                     <AiOutlineMenu size={25} />
                 </div>
 

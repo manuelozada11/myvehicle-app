@@ -18,6 +18,10 @@
     color: #00d8a6;
 }
 
+.color-secondary {
+  color: #213430;
+}
+
 /* Links */
 .link {
     text-decoration: none;

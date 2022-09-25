@@ -1,32 +1,29 @@
-import './index.css';
-import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { AiOutlineClose, AiFillHome } from 'react-icons/ai';
 import { FaUser } from 'react-icons/fa';
+import { AiOutlineClose, AiFillHome } from 'react-icons/ai';
+import { useAuth } from '../../hooks/useAuth';
 import logo from '/logo-black.png';
-import AppContext from '../../contexts/app';
-import { getStorageValue, removeItemStorage, scrollToTop } from '../../common/utils';
+import { getStorageValue, scrollToTop } from '../../common/utils';
+import './index.css';
 
 const Sidebar = () => {
-    const appContext = useContext(AppContext);
+    const { isOpenSidebar, setIsOpenSidebar, signOut } = useAuth();
 
     const onSignOut = () => { 
-        appContext.setIsOpenSidebar(false); 
-        scrollToTop(0);
-        removeItemStorage('user');
-        removeItemStorage('token');
+        setIsOpenSidebar(false);
+        signOut();
     }
 
     return (
-        <div className={`shadow d-flex flex-column justify-content-center sidebar sidebar-${appContext.isOpenSidebar ? 'open' : 'close'}`}>
+        <div className={`shadow d-flex flex-column justify-content-center sidebar sidebar-${isOpenSidebar ? 'open' : 'close'}`}>
             <div className='p-4 mb-auto d-flex justify-content-between'>
                 <h1 className='fw-bold p-0'>MVApp</h1>
-                {/* <Link to='/' onClick={() => { appContext.setIsOpenSidebar(false); scrollToTop(0); }}><img src={logo} alt="agavemedia-icon" width={150}/></Link> */}
-                <AiOutlineClose size={25} onClick={() => appContext.setIsOpenSidebar(false)}/> 
+                {/* <Link to='/' onClick={() => { setIsOpenSidebar(false); scrollToTop(0); }}><img src={logo} alt="agavemedia-icon" width={150}/></Link> */}
+                <AiOutlineClose size={25} onClick={() => setIsOpenSidebar(false)}/> 
             </div>
 
             <ul>
-                <Link onClick={() => { appContext.setIsOpenSidebar(false); scrollToTop(0); }} to='' className='py-3 d-flex flex-inline'>
+                <Link onClick={() => { setIsOpenSidebar(false); scrollToTop(0); }} to='' className='py-3 d-flex flex-inline'>
                     <AiFillHome color='black' size={25} />
                     <h5 className='mx-3'>Inicio</h5>
                 </Link>
@@ -36,7 +33,7 @@ const Sidebar = () => {
                         <FaUser color='black' size={25} />
                         <h5 className='mx-3'>Cerrar sesión</h5>
                     </Link>
-                    : <Link onClick={() => { appContext.setIsOpenSidebar(false); scrollToTop(0); }} to='signin' className='py-3 d-flex flex-inline'>
+                    : <Link onClick={() => { setIsOpenSidebar(false); scrollToTop(0); }} to='signin' className='py-3 d-flex flex-inline'>
                         <FaUser color='black' size={25} />
                         <h5 className='mx-3'>Iniciar sesión</h5>
                     </Link>
