@@ -5,6 +5,7 @@ import { useAuth } from '../../hooks/useAuth';
 import logo from '/logo-black.png';
 import { getStorageValue, scrollToTop } from '../../common/utils';
 import './index.css';
+import { version } from '../../../package.json';
 
 const Sidebar = () => {
     const { isOpenSidebar, setIsOpenSidebar, signOut } = useAuth();
@@ -40,8 +41,9 @@ const Sidebar = () => {
                 }
             </ul>
 
-            <div className='p-4 mt-auto text-center' style={{ fontSize: 15 }}>
-                Copyright 2022 ©
+            <div className='p-4 mt-auto text-center d-flex flex-column' style={{ fontSize: 15 }}>
+                <div>ver { version }</div>
+                <div>Copyright 2022 ©</div>
             </div>
         </div>
     );

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { getStorageValue, setStorageValue, removeItemStorage, scrollToTop } from "../../common/utils";
 import AuthContext from './';
+import { customError } from '../../config/customError';
 
 const AuthProvider = ({ children }) => {
     const [isOpenSidebar, setIsOpenSidebar] = useState(false);
@@ -32,6 +33,7 @@ const AuthProvider = ({ children }) => {
         setUser(null);
         removeItemStorage('user');
         removeItemStorage('token');
+        removeItemStorage('vehicle');
     }
     
     return (

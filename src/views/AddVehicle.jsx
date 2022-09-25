@@ -2,8 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useVehicle } from "../hooks/useVehicle";
 import { useForm } from "react-hook-form";
-import { IoChevronBackCircleSharp } from 'react-icons/io5';
 import { firstLetterUppercase } from "../common/utils";
+import BackButton from '../components/BackButton';
 
 const VehicleDetails = () => {
     let navigate = useNavigate();
@@ -53,7 +53,7 @@ const VehicleDetails = () => {
                 </div>
 
                 <div className="pe-0 col-3 d-flex justify-content-end align-items-center">
-                    <IoChevronBackCircleSharp onClick={ onGoBack } size={ 45 } className="color-secondary" />
+                    <BackButton onClick={ onGoBack } />
                 </div>
             </div>
 

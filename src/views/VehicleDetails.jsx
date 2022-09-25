@@ -2,9 +2,11 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useVehicle } from "../hooks/useVehicle";
-import { IoChevronBackCircleSharp, IoTrashOutline } from 'react-icons/io5';
+import { IoTrashOutline } from 'react-icons/io5';
 import { RiGasStationFill } from 'react-icons/ri';
 import { useForm } from "react-hook-form";
+import BackButton from "../components/BackButton";
+import { getStorageValue } from "../common/utils";
 
 const VehicleDetails = () => {
     let navigate = useNavigate();
@@ -38,8 +40,26 @@ const VehicleDetails = () => {
         reset();
         setError(null);
     }
+    
+    const handleTitle = () => {
+        const car = getStorageValue('vehicle');
+        return (
+            <>
+                <div className="col-9 ps-0">
+                    <h1 className="m-0 fw-bold">
+                        { car.fullname }
+                    </h1>
+                    <p className="m-0">
+                        { car.plateNumber }
+                    </p>
+                </div>
 
-    const onRefuel = () => {}
+                <div className="pe-0 col-3 d-flex justify-content-end align-items-center">
+                    <BackButton onClick={ onGoBack } />
+                </div>
+            </>
+        );
+    }
 
     useEffect(() => {
         const getVehicle = async () => {
@@ -56,24 +76,7 @@ const VehicleDetails = () => {
     return (
         <div className="container-fluid px-0">
             <div className="px-4 pt-4 pb-3 row mx-0">
-                { car === null
-                    ? <div className="col-12 px-0"><h1 className="m-0 fw-bold">Loading ...</h1></div>
-                    : <>
-                        <div className="col-9 ps-0">
-                            <h1 className="m-0 fw-bold">
-                                { (car?.hasOwnProperty('manufacture') ? `${ car.manufacture } ${ car.model }` : '') }
-                            </h1>
-                            <p className="m-0">
-                                { (car?.hasOwnProperty('plateNumber') ? `${ car.plateNumber }` : '') }
-                            </p>
-                        </div>
-        
-                        <div className="pe-0 col-3 d-flex justify-content-end align-items-center">
-                            <IoChevronBackCircleSharp onClick={ onGoBack } size={ 45 } className="color-secondary" />
-                        </div>
-                    </>
-                }
-                
+                { handleTitle() }
             </div>
 
             <div className="p-4 m-3 shadow border"
@@ -95,7 +98,7 @@ const VehicleDetails = () => {
             </div>
 
             <div className="mt-4 pt-2 d-flex justify-content-center">
-                <button type="button" className="p-2 btn rounded-circle btn-outline-primary m-2"><RiGasStationFill size={ 30 } /></button>
+                <button type="button" onClick={ () => navigate(`/refuels/v/${ _id }`) } className="p-2 btn rounded-circle btn-outline-primary m-2"><RiGasStationFill size={ 30 } /></button>
                 { !confirm && <button type="button" onClick={ () => setConfirm(true) } className="p-2 btn rounded-circle btn-outline-danger m-2"><IoTrashOutline size={ 27 } /></button> }
                 {/* <button type="button" className="btn btn-block rounded-pill btn-outline-primary mx-3 my-2">Mantenimientos</button> */}
                 {/* <button type="button" className="btn btn-block rounded-pill btn-outline-primary mx-3 my-2">Estadisticas</button> */}

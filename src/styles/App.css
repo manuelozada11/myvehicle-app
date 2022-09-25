@@ -44,8 +44,35 @@
 }
 
 
+/*  ---- CUSTOMS ---  */
+.title-layer {
+  margin-top: 4.1rem;
+  background-color: #fff;
+  z-index: 10;
+}
 
-/*  ---- BUTTONS ---  */
+.content-layer {
+  margin-top: 10.2rem;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.card-stat {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 1.5rem;
+  background-color: #b6e2d9;
+  box-shadow: 0 0.5rem 1rem #74747426;
+  border-radius: 1.5rem;
+  text-align: center;
+}
+
+
+/*  ---- CUSTOM COMPONENTS ---  */
 .card-custom {
   background-color: #e4e4e4;
   transition: 500ms;

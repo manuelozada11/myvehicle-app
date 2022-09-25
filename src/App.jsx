@@ -7,6 +7,7 @@ import Sidebar from './components/Sidebar';
 import UserHome from './views/UserHome';
 import VehicleDetails from './views/VehicleDetails';
 import AddVehicle from './views/AddVehicle';
+import Refuels from './views/Refuels';
 // views
 import Home from './views/Home';
 import Login from './views/Login';
@@ -18,7 +19,7 @@ import PrivateRoute from './components/PrivateRoute';
 const App = () => {
   useEffect(() => {
     setStorageValue('apiDomain', window.location.hostname === 'mivehiculo.vercel.app' 
-      ? "https://backend.myvehicle.vercel.app/v1"
+      ? "https://api-myvehicle.vercel.app/v1"
       : "http://localhost:5000/v1");
   }, []);
 
@@ -33,11 +34,26 @@ const App = () => {
           <Route path='signup' element={<Login />} />
           <Route path='forgetPwd' element={<Login />} />
           <Route path='resetPwd' element={<Login />} />
+
           <Route path='user' element={
             <PrivateRoute>
               <UserHome />
             </PrivateRoute>
           } />
+
+          <Route path='refuels' >
+            {/* <Route path='add' element={
+              <PrivateRoute>
+                <AddVehicle />
+              </PrivateRoute>
+            } /> */}
+            <Route path='v/:_id' element={
+              <PrivateRoute>
+                <Refuels />
+              </PrivateRoute>
+            } />
+          </Route>
+
           <Route path='vehicle' >
             <Route path='add' element={
               <PrivateRoute>
@@ -45,9 +61,10 @@ const App = () => {
               </PrivateRoute>
             } />
             <Route path=':_id' element={
-            <PrivateRoute>
-              <VehicleDetails />
-            </PrivateRoute>} />
+              <PrivateRoute>
+                <VehicleDetails />
+              </PrivateRoute>
+            } />
           </Route>
         </Routes>
       </BrowserRouter>
