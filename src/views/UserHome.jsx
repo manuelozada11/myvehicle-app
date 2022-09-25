@@ -1,21 +1,20 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useVehicle } from "../hooks/useVehicle";
+import { useVehicle, useAuth } from "../hooks";
 // components
 import Card from '../components/Card';
-import { firstLetterUppercase, getStorageValue, scrollToTop, removeItemStorage, setStorageValue } from "../common/utils";
+import { firstLetterUppercase, getStorageValue, setStorageValue } from "../common/utils";
 
 const UserHome = () => {
+    const { signOut } = useAuth();
     let navigate = useNavigate();
     const { getVehiclesByUser } = useVehicle();
     const [cars, setCars] = useState(null);
     const [user,] = useState(getStorageValue('user'));
 
     const onGoHome = async () => {
-        scrollToTop(0);
-        removeItemStorage('user');
-        removeItemStorage('token');
+        signOut();
         navigate('/');
     }
 
