@@ -53,6 +53,7 @@ const Refuels = () => {
                     key={ refuel._id } 
                     title={ `${ refuel.quantity } lts` } 
                     subtitle={ dateFormat(new Date(refuel.date)) }
+                    subtStyle={ { fontSize: "0.8rem" } }
                     img={ `$ ${ refuel.amount }` }
                     imgStyle={{ fontSize: "1.2rem", color: "#dc3545" }} />)
         );

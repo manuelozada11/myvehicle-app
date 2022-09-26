@@ -1,5 +1,8 @@
 ## App Versions
 
+### (`1.4.0`) Sep 26, 2022
+1. Add sentry to monitoring errors
+
 ### (`1.3.1`) Sep 25, 2022
 1. Fixed up, when you do sign out, the app wasn't cleaning session storage
 
