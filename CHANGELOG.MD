@@ -1,5 +1,8 @@
 ## App Versions
 
+### (`1.5.0`) Oct 1, 2022
+1. Add screen to add gas refuels to a vehicle
+
 ### (`1.4.0`) Sep 26, 2022
 1. Add sentry to monitoring errors
 

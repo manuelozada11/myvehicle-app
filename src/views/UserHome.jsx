@@ -56,19 +56,17 @@ const UserHome = () => {
 
     return (
         <div className="container-fluid px-0">
-            <div className="title-layer fixed-top mx-0 p-0">
-                <div className="px-4 py-2">
-                    <p className="mb-2 mt-3">Hola, { user ? firstLetterUppercase(user.name) : 'user' }!</p>
-                    <h1 className="fw-bolder">Tus vehiculos</h1>
-                </div>
-
-                <div className="container-fluid d-flex justify-content-center pb-2">
-                    <button type="button" onClick={ onAddVehicle } className="btn btn-outline-primary rounded-pill m-2">Agregar</button>
-                    <button type="button" onClick={ onGoHome } className="btn btn-primary rounded-pill m-2">Salir</button>
-                </div>
+            <div className="px-4 py-2">
+                <p className="mb-2 mt-3">Hola, { user ? firstLetterUppercase(user.name) : 'user' }!</p>
+                <h1 className="fw-bolder">Tus vehiculos</h1>
             </div>
 
-            <div className="content-layer container-fluid py-1 px-0">
+            <div className="container-fluid d-flex justify-content-center pb-2">
+                <button type="button" onClick={ onAddVehicle } className="btn btn-outline-primary rounded-pill m-2">Agregar</button>
+                <button type="button" onClick={ onGoHome } className="btn btn-primary rounded-pill m-2">Salir</button>
+            </div>
+
+            <div className="container-fluid py-1 px-0">
                 { cars === null
                     ? <div className="d-flex justify-content-center p-3"> Loading ...</div>
                     : handleCars()

@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useMaintenance } from "../hooks";
 import BackButton from "../components/BackButton";
 import { getStorageValue } from "../common/utils";
+import { IoAdd } from 'react-icons/io5';
 
 // components
 import Card from '../components/Card';
@@ -20,7 +21,7 @@ const Refuels = () => {
     }
 
     const onAddRefuel = async () => {
-        navigate('/vehicle/add');
+        navigate('/refuels/add');
     }
 
     const handleTitle = () => {
@@ -83,51 +84,47 @@ const Refuels = () => {
 
     return (
         <div className="container-fluid px-0">
-            <div className="mx-0 p-0 fixed-top title-layer">
-                <div className="px-4 pt-4 pb-3 row mx-0">
-                    { handleTitle() }
-                </div>
-
-                {/* <div className="d-flex justify-content-center pb-4">
-                    <button type="button" onClick={ onAddRefuel } className="p-1 btn btn-outline-primary rounded-circle">
-                        <IoAdd size={ 30 } />
-                    </button>
-                </div> */}
+            <div className="px-4 pt-4 pb-3 row mx-0">
+                { handleTitle() }
             </div>
 
-            <div className="content-layer">
-                <div className="row mx-0 px-2">
-                    <div className="col-6 p-2">
-                        <div className="card-stat h-100">
-                            <p className="m-0">Cant. Recargas</p>
-                            <h4 className="m-0 fw-bold">
-                            { refuels === null
-                                ? <div className="d-flex justify-content-center p-3">Loading ...</div>
-                                : handleRefuelStats()
-                            }
-                            </h4>
-                        </div>
-                    </div>
+            <div className="d-flex justify-content-center pb-3">
+                <button type="button" onClick={ onAddRefuel } className="p-1 btn btn-outline-primary rounded-circle">
+                    <IoAdd size={ 30 } />
+                </button>
+            </div>
 
-                    <div className="col-6 p-2">
-                        <div className="card-stat h-100">
-                            <p className="m-0">Gasto total</p>
-                            <h4 className="m-0 fw-bold">
-                            { refuels === null
-                                ? <div className="d-flex justify-content-center p-3">Loading ...</div>
-                                : handleRefuelStats(1)
-                            }
-                            </h4>
-                        </div>
+            <div className="row mx-0 px-2">
+                <div className="col-6 p-2">
+                    <div className="card-stat h-100">
+                        <p className="m-0">Cant. Recargas</p>
+                        <h4 className="m-0 fw-bold">
+                        { refuels === null
+                            ? <div className="d-flex justify-content-center p-3">Loading ...</div>
+                            : handleRefuelStats()
+                        }
+                        </h4>
                     </div>
                 </div>
 
-                <div className="pb-1 px-0">
-                    { refuels === null
-                        ? <div className="d-flex justify-content-center p-3">Loading ...</div>
-                        : handleRefuels()
-                    }
+                <div className="col-6 p-2">
+                    <div className="card-stat h-100">
+                        <p className="m-0">Gasto total</p>
+                        <h4 className="m-0 fw-bold">
+                        { refuels === null
+                            ? <div className="d-flex justify-content-center p-3">Loading ...</div>
+                            : handleRefuelStats(1)
+                        }
+                        </h4>
+                    </div>
                 </div>
+            </div>
+
+            <div className="pb-1 px-0">
+                { refuels === null
+                    ? <div className="d-flex justify-content-center p-3">Loading ...</div>
+                    : handleRefuels()
+                }
             </div>
         </div>
     );

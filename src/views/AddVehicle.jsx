@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { firstLetterUppercase } from "../common/utils";
 import BackButton from '../components/BackButton';
 
-const VehicleDetails = () => {
+const AddVehicle = () => {
     let navigate = useNavigate();
     const { register, handleSubmit, formState: { errors }, clearErrors, reset } = useForm();
     const [gasoline, setGasoline] = useState(true);
@@ -189,4 +189,4 @@ const VehicleDetails = () => {
     );
 }
 
-export default VehicleDetails;
+export default AddVehicle;

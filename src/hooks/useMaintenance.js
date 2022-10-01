@@ -18,7 +18,25 @@ export const useMaintenance = () => {
         return payload;
     }
 
+    const createRefuel = async ({ _id, data }) => {
+        const response = await fetch(`${ getStorageValue('apiDomain') }/refuels/${ _id }`, {
+            method: 'POST',
+            headers: {
+                "content-type": "application/json",
+                authorization: `Bearer ${ getStorageValue('token') }`
+            },
+            body: JSON.stringify(data)
+        });
+        if (response.status === 400) throw customError('Ocurrio un error', 400);
+        if (response.status === 500) throw customError('Error en el servidor', 500);
+
+        const result = await response.json();
+
+        return result;
+    }
+
     return {
-        getRefuelsByVehicle
+        getRefuelsByVehicle,
+        createRefuel
     }
 }
