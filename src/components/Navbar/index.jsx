@@ -36,10 +36,10 @@ const Navbar = () => {
             <div className='p-3'>
             {/* <Link to="/" className='p-3' onClick={ onSignOut }> */}
                 {/* <img src={logo} alt="agavemedia" width={200} /> */}
-                <h1 className='fw-bold m-0 color-primary'>MVApp</h1>
+                <h1 className='fw-bold m-0 color-primary'>vehi</h1>
             {/* </Link> */}
             </div>
-            <ul className='d-flex flex-row justify-content-end'>
+            <ul className='d-flex flex-row justify-content-end pe-3'>
                 { getStorageValue('token')
                     ? <Link onClick={ onSignOut } to=''>
                         Cerrar sesión

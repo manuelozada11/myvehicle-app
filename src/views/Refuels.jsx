@@ -5,6 +5,7 @@ import { useMaintenance } from "../hooks";
 import BackButton from "../components/BackButton";
 import { getStorageValue } from "../common/utils";
 import { IoAdd } from 'react-icons/io5';
+import { BsCalendarCheck, BsClock } from 'react-icons/bs';
 
 // components
 import Card from '../components/Card';
@@ -46,17 +47,26 @@ const Refuels = () => {
     }
 
     const handleRefuels = () => {
-        if (refuels?.length <= 0) return <div className="d-flex justify-content-center p-3">No tienes recargas (Por ahora) (:</div>
+        if (refuels?.length <= 0) return <div className="d-flex justify-content-center p-3">No tienes recargas este mes (Por ahora) (:</div>
         
         return (
-            refuels.map(refuel => 
-                <Card 
-                    key={ refuel._id } 
-                    title={ `${ refuel.quantity } lts` } 
-                    subtitle={ dateFormat(new Date(refuel.date)) }
-                    subtStyle={ { fontSize: "0.8rem" } }
-                    img={ `$ ${ refuel.amount }` }
-                    imgStyle={{ fontSize: "1.2rem", color: "#dc3545" }} />)
+            refuels.map(refuel => {
+                const date = dateFormat(new Date(refuel.date)).split(', ')[0];
+                const time = dateFormat(new Date(refuel.date)).split(', ')[1];
+                const subtitle = <div className="m-0 fw-bold card-subtitle mt-1" style={{ fontSize: "0.8rem" }} >
+                    <p className="mx-0 mt-0 mb-1"><BsCalendarCheck size={ 16 } className="me-1" /> { date }</p>
+                    <p className="m-0"><BsClock size={ 16 } className="me-1" /> { time }</p>
+                </div>;
+
+                return (
+                    <Card 
+                        key={ refuel._id } 
+                        title={ `${ refuel.quantity } lts` }
+                        subtitle={ subtitle }
+                        value={ `$ ${ refuel.amount }` }
+                        valueStyle={{ fontSize: "1.2rem", color: "#dc3545" }} />
+                );
+            })
         );
     }
     
@@ -113,7 +123,7 @@ const Refuels = () => {
                         <h4 className="m-0 fw-bold">
                         { refuels === null
                             ? <div className="d-flex justify-content-center p-3">Loading ...</div>
-                            : handleRefuelStats(1)
+                            : `$ ${ handleRefuelStats(1) }`
                         }
                         </h4>
                     </div>

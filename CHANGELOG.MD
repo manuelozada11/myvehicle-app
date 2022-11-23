@@ -1,5 +1,9 @@
 ## App Versions
 
+### (`1.6.0`) Nov 22, 2022
+1. Add qr code
+2. Add vehicle info screen
+
 ### (`1.5.0`) Oct 1, 2022
 1. Add screen to add gas refuels to a vehicle
 

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { FaUser } from 'react-icons/fa';
 import { AiOutlineClose, AiFillHome } from 'react-icons/ai';
+import { FiLogOut, FiLogIn } from 'react-icons/fi';
 import { useAuth } from '../../hooks/useAuth';
 import logo from '/logo-black.png';
 import { getStorageValue, scrollToTop } from '../../common/utils';
@@ -15,12 +16,17 @@ const Sidebar = () => {
         signOut();
     }
 
+    const onProfile = () => {
+        setIsOpenSidebar(false); 
+        scrollToTop(0);
+    }
+
     return (
         <div className={`shadow d-flex flex-column justify-content-center sidebar sidebar-${isOpenSidebar ? 'open' : 'close'}`}>
             <div className='p-4 mb-auto d-flex justify-content-between'>
-                <h1 className='fw-bold p-0'>MVApp</h1>
+                <h1 className='fw-bold p-0'>vehi</h1>
                 {/* <Link to='/' onClick={() => { setIsOpenSidebar(false); scrollToTop(0); }}><img src={logo} alt="agavemedia-icon" width={150}/></Link> */}
-                <AiOutlineClose size={25} onClick={() => setIsOpenSidebar(false)}/> 
+                <AiOutlineClose className='ms-auto' size={25} onClick={() => setIsOpenSidebar(false)}/> 
             </div>
 
             <ul>
@@ -30,12 +36,19 @@ const Sidebar = () => {
                 </Link>
 
                 { getStorageValue('token')
-                    ? <Link onClick={ onSignOut } to='' className='py-3 d-flex flex-inline'>
-                        <FaUser color='black' size={25} />
-                        <h5 className='mx-3'>Cerrar sesión</h5>
-                    </Link>
+                    ? <>
+                        <Link onClick={ onProfile } to='' className='py-3 d-flex flex-inline'>
+                            <FaUser color='black' size={25} />
+                            <h5 className='mx-3'>Mi Perfil</h5>
+                        </Link>
+
+                        <Link onClick={ onSignOut } to='' className='py-3 d-flex flex-inline'>
+                            <FiLogOut color='black' size={25} />
+                            <h5 className='mx-3'>Cerrar sesión</h5>
+                        </Link>
+                    </>
                     : <Link onClick={() => { setIsOpenSidebar(false); scrollToTop(0); }} to='signin' className='py-3 d-flex flex-inline'>
-                        <FaUser color='black' size={25} />
+                        <FiLogIn color='black' size={25} />
                         <h5 className='mx-3'>Iniciar sesión</h5>
                     </Link>
                 }

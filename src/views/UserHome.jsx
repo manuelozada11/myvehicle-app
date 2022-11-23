@@ -2,9 +2,10 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useVehicle, useAuth } from "../hooks";
+import { FiLogOut } from 'react-icons/fi';
+import { firstLetterUppercase, getStorageValue, setStorageValue } from "../common/utils";
 // components
 import Card from '../components/Card';
-import { firstLetterUppercase, getStorageValue, setStorageValue } from "../common/utils";
 
 const UserHome = () => {
     const { signOut } = useAuth();
@@ -35,10 +36,9 @@ const UserHome = () => {
                 <Card 
                     key={ car._id } 
                     title={ car.fullname } 
-                    subtitle={ car.plateNumber }
+                    subtitle={ <div className="m-0 fw-bold card-subtitle" ><p className="m-0">{ car.plateNumber }</p></div>  }
                     onClick={ () => onGoVehicle(car) }
-                    img={ `IMG` }
-                    imgStyle={{ backgroundColor: "#c5c5c5", padding: "1rem 1rem" }} />)
+                    valueStyle={{ backgroundColor: "#c5c5c5", padding: "1rem 1rem" }} />)
         );
     }
 
@@ -63,7 +63,9 @@ const UserHome = () => {
 
             <div className="container-fluid d-flex justify-content-center pb-2">
                 <button type="button" onClick={ onAddVehicle } className="btn btn-outline-primary rounded-pill m-2">Agregar</button>
-                <button type="button" onClick={ onGoHome } className="btn btn-primary rounded-pill m-2">Salir</button>
+                <button type="button" onClick={ onGoHome } className="btn btn-primary rounded-pill m-2 d-flex align-items-center">
+                    <FiLogOut className="me-1" size={20} /> Salir
+                </button>
             </div>
 
             <div className="container-fluid py-1 px-0">

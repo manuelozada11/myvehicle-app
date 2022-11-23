@@ -2,20 +2,24 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useVehicle } from "../hooks/useVehicle";
-import { IoTrashOutline } from 'react-icons/io5';
-import { RiGasStationFill } from 'react-icons/ri';
+import { IoTrashOutline, IoDocumentTextOutline } from 'react-icons/io5';
+import { RiGasStationFill, RiShareForwardLine, RiCalendarCheckLine } from 'react-icons/ri';
+import { FaRoute } from 'react-icons/fa';
 import { useForm } from "react-hook-form";
 import BackButton from "../components/BackButton";
 import { getStorageValue } from "../common/utils";
+import CustomQrCode from "../components/CustomQrCode";
 
 const VehicleDetails = () => {
     let navigate = useNavigate();
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const { _id } = useParams();
-    const { getVehiclesById, deleteCarById } = useVehicle();
+    const { getVehiclesInfoById, deleteCarById } = useVehicle();
     const [car, setCar] = useState(null);
+    const [qrcode, setQrcode] = useState(false);
     const [confirm, setConfirm] = useState(false);
     const [error, setError] = useState(null);
+    const [permissions, setPermissions] = useState(false);
     
     const onGoBack = () => {
         navigate('/user');
@@ -64,7 +68,7 @@ const VehicleDetails = () => {
     useEffect(() => {
         const getVehicle = async () => {
             try {
-                const car = await getVehiclesById({ _id });
+                const car = await getVehiclesInfoById({ _id });
                 setCar(car);
             } catch (e) {
                 setCar({});
@@ -79,29 +83,33 @@ const VehicleDetails = () => {
                 { handleTitle() }
             </div>
 
-            <div className="p-4 m-3 shadow border"
-                style={{ borderRadius: "1.5rem", backgroundColor: "#e4e4e4" }}>
-                <div className="my-2">
-                    <h4 className="m-0 fw-bold">Año</h4>
-                    <p>{ (car?.hasOwnProperty('year') ? `${ car.year }` : '') }</p>
-                </div>
-                
-                <div className="my-2">
-                    <h4 className="m-0 fw-bold">Distancia recorrida</h4>
-                    <p>{ (car?.hasOwnProperty('displacement') ? `${ car.displacement }` : '') } Km</p>
-                </div>
-                
-                <div className="my-2">
-                    <h4 className="m-0 fw-bold">Combustible</h4>
-                    <p className="mb-0">{ (car?.hasOwnProperty('type') ? (car.energyType !== 'diesel' && car.type) : '') } { (car?.hasOwnProperty('energyType') ? `${ car.energyType }` : '') }</p>
-                </div>
-            </div>
-
-            <div className="mt-4 pt-2 d-flex justify-content-center">
+            <div className="d-flex justify-content-center">
+                <button type="button" onClick={ () => navigate(`/vehicle/info/${ _id }`) } className="p-2 btn rounded-circle btn-outline-primary m-2"><IoDocumentTextOutline size={ 27 } /></button>
                 <button type="button" onClick={ () => navigate(`/refuels/v/${ _id }`) } className="p-2 btn rounded-circle btn-outline-primary m-2"><RiGasStationFill size={ 30 } /></button>
+                <button type="button" onClick={ () => setQrcode(true) } className="p-2 btn rounded-circle btn-outline-primary m-2"><RiShareForwardLine size={ 30 } /></button>
                 { !confirm && <button type="button" onClick={ () => setConfirm(true) } className="p-2 btn rounded-circle btn-outline-danger m-2"><IoTrashOutline size={ 27 } /></button> }
                 {/* <button type="button" className="btn btn-block rounded-pill btn-outline-primary mx-3 my-2">Mantenimientos</button> */}
                 {/* <button type="button" className="btn btn-block rounded-pill btn-outline-primary mx-3 my-2">Estadisticas</button> */}
+            </div>
+
+            <div className="p-4 m-3 shadow border"
+                style={{ borderRadius: "1.5rem", backgroundColor: "#e4e4e4" }}>
+                <div className="row mx-0">
+                    <div className="col-4 my-2 p-0">
+                        <p className="mb-1 fw-bold d-flex align-items-center"><RiCalendarCheckLine className="me-2" size={ 25 } />Año</p>
+                        <h2 className="fw-light mb-0">{ (car?.hasOwnProperty('year') ? `${ car.year }` : '') }</h2>
+                    </div>
+                    
+                    <div className="col-8 my-2 p-0">
+                        <p className="mb-1 fw-bold d-flex align-items-center"><FaRoute className="me-2" size={ 23 } />Distancia recorrida</p>
+                        <h2 className="fw-light mb-0">{ (car?.hasOwnProperty('displacement') ? `${ car.displacement }` : '') } Km</h2>
+                    </div>
+                </div>
+                
+                <div className="my-2">
+                    <h5 className="mb-1 fw-bold d-flex align-items-center"><RiGasStationFill className="me-2" size={ 25 } />Combustible</h5>
+                    <h2 className="fw-light mb-0">{ (car?.hasOwnProperty('type') ? (car.energyType !== 'diesel' && car.type) : '') } { (car?.hasOwnProperty('energyType') ? `${ car.energyType }` : '') }</h2>
+                </div>
             </div>
 
             { confirm &&
@@ -121,6 +129,13 @@ const VehicleDetails = () => {
                         { error && <p className="px-3 pt-3 text-danger">{ error }</p> }
                     </div>
                 </form>
+            }
+
+            { qrcode &&
+                <CustomQrCode 
+                    value={ `${ car?._id }/${ permissions ? 0 : 1 }` }
+                    onClose={ () => setQrcode(false) }
+                />
             }
         </div>
     );

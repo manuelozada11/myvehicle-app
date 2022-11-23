@@ -9,6 +9,7 @@ import VehicleDetails from './views/VehicleDetails';
 import AddVehicle from './views/AddVehicle';
 import Refuels from './views/Refuels';
 import AddRefuel from './views/AddRefuel';
+import VehicleInfo from './views/VehicleInfo';
 // views
 import Home from './views/Home';
 import Login from './views/Login';
@@ -19,7 +20,7 @@ import PrivateRoute from './components/PrivateRoute';
 
 const App = () => {
   useEffect(() => {
-    setStorageValue('apiDomain', true
+    setStorageValue('apiDomain', false
       ? "https://api-myvehicle.vercel.app/v1"
       : "http://localhost:5000/v1");
   }, []);
@@ -62,6 +63,13 @@ const App = () => {
                 <AddVehicle />
               </PrivateRoute>
             } />
+
+            <Route path='info/:_id' element={
+              <PrivateRoute>
+                <VehicleInfo />
+              </PrivateRoute>
+            } />
+
             <Route path=':_id' element={
               <PrivateRoute>
                 <VehicleDetails />

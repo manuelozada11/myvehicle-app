@@ -6,32 +6,12 @@ import { firstLetterUppercase, getStorageValue } from "../common/utils";
 import BackButton from '../components/BackButton';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css'
+import { useEffect } from "react";
 
 const AddRefuel = () => {
     let navigate = useNavigate();
     const { register, handleSubmit, control, formState: { errors }, clearErrors, reset } = useForm();
-    const [stations, setStations] = useState([
-        {
-            path: "/puma.png",
-            name: "Puma",
-            _id: "123"
-        },
-        {
-            path: "/terpel.png",
-            name: "Terpel",
-            _id: "234"
-        },
-        {
-            path: "/texaco.png",
-            name: "Texaco",
-            _id: "456"
-        },
-        {
-            path: "/delta.png",
-            name: "Delta",
-            _id: "678"
-        }
-    ]);
+    const [stations, setStations] = useState(null);
     const [vehicle,] = useState(getStorageValue('vehicle'))
     const [stationSelected, setStationSelected] = useState(null);
     const { createRefuel } = useMaintenance();
@@ -77,6 +57,42 @@ const AddRefuel = () => {
         reset();
         setError(null);
     }
+
+    useEffect(() => {
+        const country = getStorageValue('user').country;
+        
+        if (country === 'panama')
+            setStations([
+                {
+                    path: "/puma.png",
+                    name: "Puma",
+                    _id: "123"
+                },
+                {
+                    path: "/terpel.png",
+                    name: "Terpel",
+                    _id: "234"
+                },
+                {
+                    path: "/texaco.png",
+                    name: "Texaco",
+                    _id: "456"
+                },
+                {
+                    path: "/delta.png",
+                    name: "Delta",
+                    _id: "678"
+                }
+            ]);
+        else 
+            setStations([
+                {
+                    path: "/pdv.png",
+                    name: "PDV",
+                    _id: "123"
+                }
+            ]);
+    }, []);
 
     return (
         <div className="container-fluid px-0">
@@ -133,7 +149,7 @@ const AddRefuel = () => {
                                     showTimeSelect
                                     onChange={ onChange }
                                     onBlur={ onBlur }
-                                    selected={ value }
+                                    selected={ value ? value : new Date() }
                                     timeClassName={ handleColor }
                                     className="form-control form-control-sm rounded-pill"
                                 />
