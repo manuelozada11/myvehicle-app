@@ -20,7 +20,7 @@ import PrivateRoute from './components/PrivateRoute';
 
 const App = () => {
   useEffect(() => {
-    setStorageValue('apiDomain', false
+    setStorageValue('apiDomain', window.location.hostname !== "localhost" 
       ? "https://api-myvehicle.vercel.app/v1"
       : "http://localhost:5000/v1");
   }, []);
