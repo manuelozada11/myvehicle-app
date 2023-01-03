@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { defaultCatcher } from "../config/defaultCatcher";
 import { useAuth } from "../hooks/useAuth";
 import { useForm } from 'react-hook-form';
+import { translate } from "../common/utils";
 
 const Login = () => {
     let navigate = useNavigate();
@@ -35,20 +36,20 @@ const Login = () => {
             <div style={{ borderRadius: '1.5rem', backgroundColor: "#293331e3", color: "#2b2b2b" }}
                 className="p-5 m-3 text-center shadow">
                 <h1 className="font-bebas text-light" style={{ fontSize: '3rem' }}>
-                    INICIAR <span className="color-primary">SESION</span>
+                    {translate("users.signin.title.sign")} <span className="color-primary">{translate("users.signin.title.in")}</span>
                 </h1>
             </div>
 
             <form onSubmit={ handleSubmit(onSignIn) } className="p-5 d-flex flex-column align-items-center">
                 <div className="mb-4">
-                    <h6><span className="text-danger fw-bold">*</span> Usuario:</h6>
+                    <h6><span className="text-danger fw-bold">*</span> {translate("users.signin.user")}:</h6>
                     <input className={ `form-control ${ errors.username ? 'is-invalid' : '' }` }
                         {...register("username", { required: { value: true, message: 'Campo obligatorio' } })} type="text" />
                     { errors.username && <p className="mt-1 text-danger">{ errors.username.message }</p> }
                 </div>
 
                 <div className="mb-4">
-                    <h6><span className="text-danger fw-bold">*</span> Contrasena:</h6>
+                    <h6><span className="text-danger fw-bold">*</span> {translate("users.signin.pwd")}:</h6>
                     <input className={ `form-control ${ errors.password ? 'is-invalid' : '' }` }
                         {...register("password", { required: { value: true, message: 'Campo obligatorio' } })} type="password" />
                     { errors.password && <p className="mt-1 text-danger">{ errors.password.message }</p> }
@@ -59,8 +60,8 @@ const Login = () => {
                 </div>
 
                 <div className="p-2">
-                    <button className="btn btn-outline-primary m-2" onClick={ onReset } type="reset">Limpiar</button>
-                    <button className="btn btn-primary m-2" type="submit">Aceptar</button>
+                    <button className="btn btn-outline-primary m-2" onClick={ onReset } type="reset">{translate("users.signin.clear")}</button>
+                    <button className="btn btn-primary m-2" type="submit">{translate("users.signin.submit")}</button>
                 </div>
             </form>
         </div>

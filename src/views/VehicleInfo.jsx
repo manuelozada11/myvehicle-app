@@ -1,20 +1,20 @@
 import { useState } from "react";
 import { useEffect } from "react";
+import DatePicker from 'react-datepicker';
 import { useNavigate, useParams } from "react-router-dom";
 import { useVehicle } from "../hooks/useVehicle";
 import { AiOutlineEdit, AiOutlineCheckCircle } from 'react-icons/ai';
 import { FiAlertCircle } from 'react-icons/fi';
 import { useForm, Controller } from "react-hook-form";
-import BackButton from "../components/BackButton";
 import { getStorageValue, dateFormat, firstLetterUppercase } from "../common/utils";
-import DatePicker from 'react-datepicker';
+import BackButton from "../components/BackButton";
 import { VEHICLE_TYPE } from "../constants/vehicles";
 
 const VehicleInfo = () => {
     let navigate = useNavigate();
     const { register, handleSubmit, control, formState: { errors }, reset, setError } = useForm();
     const { _id } = useParams();
-    const { getVehiclesById, deleteCarById } = useVehicle();
+    const { getVehiclesById } = useVehicle();
     const [car, setCar] = useState(null);
     const [edit, setEdit] = useState(false);
     const [error, setCustomError] = useState(null);
@@ -25,11 +25,11 @@ const VehicleInfo = () => {
 
     const onEditCar = async (data) => {
         try {
-            if (typeof data.boughtDate === "undefined") data.boughtDate = new Date();
+            if (typeof data.boughtDate === "undefined") data.boughtDate = (car?.boughtDate ?? new Date());
             
-            if (typeof data.insuranceDate === "undefined") data.insuranceDate = new Date();
+            if (typeof data.insuranceDate === "undefined") data.insuranceDate = (car?.insuranceDate ?? new Date());
             
-            if (typeof data.taxesDate === "undefined") data.taxesDate = new Date();
+            if (typeof data.taxesDate === "undefined") data.taxesDate = (car?.taxesDate ?? new Date());
 
             data.name = `${ firstLetterUppercase(data.manufacture) } ${ firstLetterUppercase(data.model) }`;
             console.log(data);
@@ -112,7 +112,7 @@ const VehicleInfo = () => {
                 <div className="p-4 m-3 shadow border"
                     style={{ borderRadius: "1.5rem", backgroundColor: "#e4e4e4" }}>
                     <h1 className="mb-3" style={{ fontWeight: '900' }}>
-                        Detalles { !edit && <AiOutlineEdit className="ms-1" size={ 27 } onClick={ () => setEdit(true) } /> }
+                        Detalles { !edit && <AiOutlineEdit className="ms-1 cursor-pointer" size={ 27 } onClick={ () => setEdit(true) } /> }
                     </h1>
 
                     <div className="my-2">

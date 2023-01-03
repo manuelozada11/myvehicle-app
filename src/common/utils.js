@@ -1,3 +1,6 @@
+import es from "../translate/es.json";
+import en from "../translate/en.json";
+
 export const scrollToTop = (value) => window.scrollTo({ behavior: 'smooth', top: value})
 
 export const removeItemStorage = (key) => {
@@ -43,4 +46,15 @@ export const orderBy = (array, by) => {
 
 export const round = (value, decimals) => {
     return Number(Math.round(value + 'e' + decimals) + 'e-' + decimals);
+}
+
+export const translate = (value) => {
+    const lang = window.navigator.language?.split("-")[0];
+
+    switch (lang) {
+        case "es":
+            return es[value];
+        default:
+            return en[value];
+    }
 }
