@@ -1,11 +1,15 @@
 ## App Versions
 
+### (`1.8.0`) Jan 7, 2023
+1. Add refuel flow translation
+2. Fix add refuel, now you don't need to select fuel type and also you can enter distance travaled
+
 ### (`1.7.0`) Jan 7, 2023
 1. Add home translation
-1. Add sidebar translation
-2. Add sign in translation
-3. Add home user translation
-4. Update vehicle info
+2. Add sidebar translation
+3. Add sign in translation
+4. Add home user translation
+5. Update vehicle info
 
 ### (`1.6.0`) Nov 22, 2022
 1. Add qr code

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useMaintenance } from "../hooks";
 import { useForm, Controller } from "react-hook-form";
-import { firstLetterUppercase, getStorageValue } from "../common/utils";
+import { firstLetterUppercase, getStorageValue, translate } from "../common/utils";
 import BackButton from '../components/BackButton';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css'
@@ -16,7 +16,6 @@ const AddRefuel = () => {
     const [stationSelected, setStationSelected] = useState(null);
     const { createRefuel } = useMaintenance();
     const [error, setError] = useState(null);
-    const [startDate, setStartDate] = useState(new Date());
 
     const handleColor = (time) => {
         return time.getHours() > 12 ? "text-success" : "text-error";
@@ -31,8 +30,10 @@ const AddRefuel = () => {
             clearErrors(null);
             if (!stationSelected) return setError('Debes elegir una estación')
 
+            if (typeof data.date === "undefined") data.date = new Date();
             data.amount = Number(data.amount);
             data.quantity = Number(data.quantity);
+            data.displacement = Number(data.displacement ?? 0);
             data.gasStation = {
                 name: stationSelected,
                 location: firstLetterUppercase(data.location.trim())
@@ -99,10 +100,10 @@ const AddRefuel = () => {
             <div className="px-4 pt-4 pb-3 row mx-0">
                 <div className="col-9 ps-0">
                     <h1 className="m-0 fw-bold">
-                        Agregar recarga
+                        {translate("vehicle.refuels.add.title")}
                     </h1>
                     <p className="m-0">
-                        Introduce los datos solicitados
+                        {translate("vehicle.refuels.add.subtitle")}
                     </p>
                 </div>
 
@@ -116,7 +117,7 @@ const AddRefuel = () => {
                     style={{ borderRadius: "1.5rem", backgroundColor: "#e4e4e4" }}>
                     <div className="row mb-3 mx-0">
                         <div className="col-6 ps-0">
-                            <p className="mb-1 mt-1 fw-bold"><span className="text-danger fw-bold">*</span> Lts</p>
+                            <p className="my-1 fw-bold"><span className="text-danger fw-bold">*</span> {translate("vehicle.refuels.add.lts")}</p>
                             <input type="number" 
                                 step="0.01"
                                 className={ `form-control form-control-sm rounded-pill ${ errors.quantity ? 'is-invalid' : '' }` }
@@ -124,23 +125,35 @@ const AddRefuel = () => {
                         </div>
 
                         <div className="col-6 ps-0">
-                            <p className="mb-1 mt-1 fw-bold"><span className="text-danger fw-bold">*</span> Monto ($)</p>
+                            <p className="my-1 fw-bold"><span className="text-danger fw-bold">*</span> {translate("vehicle.refuels.add.amount")} ($)</p>
                             <input type="number" 
-                                step="0.01"
+                                step="0.001"
                                 className={ `form-control form-control-sm rounded-pill ${ errors.amount ? 'is-invalid' : '' }` }
                                 {...register("amount", { required: true })} />
                         </div>
                     </div>
                     
                     <div className="my-2">
-                        <p className="mb-1 mt-3 fw-bold"><span className="text-danger fw-bold">*</span> Ubicación</p>
-                        <input type="text" 
-                            className={ `form-control form-control-sm rounded-pill ${ errors.location ? 'is-invalid' : '' }` }
-                            {...register("location", { required: true })} />
+                        <div className="row mb-3 mx-0">
+                            <div className="col-6 ps-0">
+                                <p className="my-1 fw-bold"><span className="text-danger fw-bold">*</span> {translate("vehicle.refuels.add.location")}</p>
+                                <input type="text" 
+                                    className={ `form-control form-control-sm rounded-pill ${ errors.location ? 'is-invalid' : '' }` }
+                                    {...register("location", { required: true })} />
+                            </div>
+                            
+                            <div className="col-6 ps-0">
+                                <p className="ms-2 my-1 fw-bold">{translate("vehicle.refuels.add.displacement")}</p>
+                                <input type="number" 
+                                    step="0.01"
+                                    className="form-control form-control-sm rounded-pill"
+                                    {...register("displacement")} />
+                            </div>
+                        </div>
                     </div>
 
                     <div className="my-2">
-                        <p className="mb-1 mt-3 fw-bold">Fecha</p>
+                        <p className="mb-1 mt-3 ms-2 fw-bold">{translate("vehicle.refuels.add.date")}</p>
                         <Controller
                             control={control}
                             name="date"
@@ -155,45 +168,6 @@ const AddRefuel = () => {
                                 />
                             )}
                         />
-                    </div>
-                
-                    <div className="my-2">
-                        <p className="mb-1 mt-3 fw-bold"><span className="text-danger fw-bold">*</span> Combustible utilizado</p>
-                        <div className="d-flex">
-                            <div className="me-4 form-check">
-                                <input className="form-check-input"
-                                    {...register("fuel")}
-                                    value="95"
-                                    type="radio" 
-                                    name="fuel" id="radio95" 
-                                    defaultChecked />
-                                <label className="form-check-label" htmlFor="radio95">
-                                    95
-                                </label>
-                            </div>
-
-                            <div className="mx-4 form-check">
-                                <input className="form-check-input" 
-                                    {...register("fuel")}
-                                    value="91"
-                                    type="radio" 
-                                    name="fuel" id="radio91" />
-                                <label className="form-check-label" htmlFor="radio91">
-                                    91
-                                </label>
-                            </div>
-
-                            <div className="ms-4 form-check">
-                                <input className="form-check-input"
-                                    {...register("fuel")}
-                                    value="diesel"
-                                    type="radio" 
-                                    name="fuel" id="radioDiesel" />
-                                <label className="form-check-label" htmlFor="radioDiesel">
-                                    Diesel
-                                </label>
-                            </div>
-                        </div>
                     </div>
                 </div>
 

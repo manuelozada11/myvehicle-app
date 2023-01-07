@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useMaintenance } from "../hooks";
 import BackButton from "../components/BackButton";
-import { getStorageValue } from "../common/utils";
+import { getStorageValue, translate } from "../common/utils";
 import { IoAdd } from 'react-icons/io5';
 import { BsCalendarCheck, BsClock } from 'react-icons/bs';
 
@@ -47,7 +47,7 @@ const Refuels = () => {
     }
 
     const handleRefuels = () => {
-        if (refuels?.length <= 0) return <div className="d-flex justify-content-center p-3">No tienes recargas este mes (Por ahora) (:</div>
+        if (refuels?.length <= 0) return <div className="d-flex justify-content-center p-3">{translate("vehicle.refuels.norefuel")}</div>
         
         return (
             refuels.map(refuel => {
@@ -107,7 +107,7 @@ const Refuels = () => {
             <div className="row mx-0 px-2">
                 <div className="col-6 p-2">
                     <div className="card-stat h-100">
-                        <p className="m-0">Cant. Recargas</p>
+                        <p className="m-0">{translate("vehicle.refuels.refuelsQty")}</p>
                         <h4 className="m-0 fw-bold">
                         { refuels === null
                             ? <div className="d-flex justify-content-center p-3">Loading ...</div>
@@ -119,7 +119,7 @@ const Refuels = () => {
 
                 <div className="col-6 p-2">
                     <div className="card-stat h-100">
-                        <p className="m-0">Gasto total</p>
+                        <p className="m-0">{translate("vehicle.refuels.spent")}</p>
                         <h4 className="m-0 fw-bold">
                         { refuels === null
                             ? <div className="d-flex justify-content-center p-3">Loading ...</div>

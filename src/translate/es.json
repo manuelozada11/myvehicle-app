@@ -24,5 +24,15 @@
     "vehicle.details.delete.title1": "Escribe la placa",
     "vehicle.details.delete.title2": "para confirmar",
     "vehicle.details.accept": "Eliminar",
-    "vehicle.details.cancel": "Cancelar"
+    "vehicle.details.cancel": "Cancelar",
+    "vehicle.refuels.refuelsQty": "Cant. Recargas",
+    "vehicle.refuels.spent": "Gasto mensual",
+    "vehicle.refuels.norefuel": "Tu no tienes recargas este mes (por ahora) (:",
+    "vehicle.refuels.add.title": "Agregar recarga",
+    "vehicle.refuels.add.subtitle": "Introduce los datos solicitados",
+    "vehicle.refuels.add.lts": "Lts",
+    "vehicle.refuels.add.amount": "Monto",
+    "vehicle.refuels.add.location": "Ubicación",
+    "vehicle.refuels.add.displacement": "Km",
+    "vehicle.refuels.add.date": "Fecha"
 }

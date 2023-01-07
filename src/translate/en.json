@@ -24,5 +24,15 @@
     "vehicle.details.delete.title1": "Type the plate number",
     "vehicle.details.delete.title2": "to confirm",
     "vehicle.details.accept": "Delete",
-    "vehicle.details.cancel": "Cancel"
+    "vehicle.details.cancel": "Cancel",
+    "vehicle.refuels.refuelsQty": "Refuels Qty.",
+    "vehicle.refuels.spent": "Spent Monthly",
+    "vehicle.refuels.norefuel": "You don't have any refuels this month (For now) (:",
+    "vehicle.refuels.add.title": "Add Refuel",
+    "vehicle.refuels.add.subtitle": "Type the information requested",
+    "vehicle.refuels.add.lts": "Lts",
+    "vehicle.refuels.add.amount": "Amount",
+    "vehicle.refuels.add.location": "Location",
+    "vehicle.refuels.add.displacement": "Km",
+    "vehicle.refuels.add.date": "Date"
 }
