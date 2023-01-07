@@ -1,5 +1,12 @@
 ## App Versions
 
+### (`1.7.0`) Jan 7, 2023
+1. Add home translation
+1. Add sidebar translation
+2. Add sign in translation
+3. Add home user translation
+4. Update vehicle info
+
 ### (`1.6.0`) Nov 22, 2022
 1. Add qr code
 2. Add vehicle info screen

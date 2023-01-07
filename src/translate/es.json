@@ -1,4 +1,13 @@
 {
+    "home.section1.title1": "tu",
+    "home.section1.title2": "vehiculo",
+    "home.section1.title3": "en un solo lugar",
+    "home.section2.greetings": "HOLA",
+    "home.section2.information": "Inicia sesión para ver tu información",
+    "sidebar.option1.home": "Inicio",
+    "sidebar.option2.profile": "Mi Perfil",
+    "sidebar.option3.signin": "Iniciar sesión",
+    "sidebar.option4.signout": "Cerrar sesión",
     "users.home.title": "Tus vehiculos",
     "users.home.subtitle": "Hola",
     "users.home.button.add": "Agregar",
@@ -8,5 +17,12 @@
     "users.signin.user": "Usuario",
     "users.signin.pwd": "Contraseña",
     "users.signin.clear": "Limpiar",
-    "users.signin.submit": "Aceptar"
+    "users.signin.submit": "Aceptar",
+    "vehicle.details.year": "Año",
+    "vehicle.details.displacement": "Distancia recorrida",
+    "vehicle.details.energytype": "Combustible",
+    "vehicle.details.delete.title1": "Escribe la placa",
+    "vehicle.details.delete.title2": "para confirmar",
+    "vehicle.details.accept": "Eliminar",
+    "vehicle.details.cancel": "Cancelar"
 }

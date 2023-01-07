@@ -1,4 +1,13 @@
 {
+    "home.section1.title1": "Your",
+    "home.section1.title2": "vehicle",
+    "home.section1.title3": "in a same place",
+    "home.section2.greetings": "hey",
+    "home.section2.information": "Make sign in to see more details in your account",
+    "sidebar.option1.home": "Home",
+    "sidebar.option2.profile": "Profile",
+    "sidebar.option3.signin": "Sign In",
+    "sidebar.option4.signout": "Sign Out",
     "users.home.title": "Your vehicles",
     "users.home.subtitle": "Hey",
     "users.home.button.add": "Add",
@@ -8,5 +17,12 @@
     "users.signin.user": "Username",
     "users.signin.pwd": "Password",
     "users.signin.clear": "Clear",
-    "users.signin.submit": "Submit"
+    "users.signin.submit": "Submit",
+    "vehicle.details.year": "year",
+    "vehicle.details.displacement": "distance traveled",
+    "vehicle.details.energytype": "fuel type",
+    "vehicle.details.delete.title1": "Type the plate number",
+    "vehicle.details.delete.title2": "to confirm",
+    "vehicle.details.accept": "Delete",
+    "vehicle.details.cancel": "Cancel"
 }

@@ -4,7 +4,7 @@ import { AiOutlineClose, AiFillHome } from 'react-icons/ai';
 import { FiLogOut, FiLogIn } from 'react-icons/fi';
 import { useAuth } from '../../hooks/useAuth';
 import logo from '/logo-black.png';
-import { getStorageValue, scrollToTop } from '../../common/utils';
+import { getStorageValue, scrollToTop, translate } from '../../common/utils';
 import './index.css';
 import { version } from '../../../package.json';
 
@@ -32,24 +32,24 @@ const Sidebar = () => {
             <ul>
                 <Link onClick={() => { setIsOpenSidebar(false); scrollToTop(0); }} to='' className='py-3 d-flex flex-inline'>
                     <AiFillHome color='black' size={25} />
-                    <h5 className='mx-3'>Inicio</h5>
+                    <h5 className='mx-3'>{translate("sidebar.option1.home")}</h5>
                 </Link>
 
                 { getStorageValue('token')
                     ? <>
                         <Link onClick={ onProfile } to='' className='py-3 d-flex flex-inline'>
                             <FaUser color='black' size={25} />
-                            <h5 className='mx-3'>Mi Perfil</h5>
+                            <h5 className='mx-3'>{translate("sidebar.option2.profile")}</h5>
                         </Link>
 
                         <Link onClick={ onSignOut } to='' className='py-3 d-flex flex-inline'>
                             <FiLogOut color='black' size={25} />
-                            <h5 className='mx-3'>Cerrar sesión</h5>
+                            <h5 className='mx-3'>{translate("sidebar.option4.signout")}</h5>
                         </Link>
                     </>
                     : <Link onClick={() => { setIsOpenSidebar(false); scrollToTop(0); }} to='signin' className='py-3 d-flex flex-inline'>
                         <FiLogIn color='black' size={25} />
-                        <h5 className='mx-3'>Iniciar sesión</h5>
+                        <h5 className='mx-3'>{translate("sidebar.option3.signin")}</h5>
                     </Link>
                 }
             </ul>
