@@ -6,7 +6,7 @@ import { useVehicle } from "../hooks/useVehicle";
 import { AiOutlineEdit, AiOutlineCheckCircle } from 'react-icons/ai';
 import { FiAlertCircle } from 'react-icons/fi';
 import { useForm, Controller } from "react-hook-form";
-import { getStorageValue, dateFormat, firstLetterUppercase } from "../common/utils";
+import { getStorageValue, dateFormat } from "../common/utils";
 import BackButton from "../components/BackButton";
 import { VEHICLE_TYPE } from "../constants/vehicles";
 
@@ -14,9 +14,10 @@ const VehicleInfo = () => {
     let navigate = useNavigate();
     const { register, handleSubmit, control, formState: { errors }, reset, setError } = useForm();
     const { _id } = useParams();
-    const { getVehiclesById } = useVehicle();
+    const { getVehiclesById, updateCarById } = useVehicle();
     const [car, setCar] = useState(null);
     const [edit, setEdit] = useState(false);
+    const [update, setUpdate] = useState(false);
     const [error, setCustomError] = useState(null);
     
     const onGoBack = () => {
@@ -31,11 +32,15 @@ const VehicleInfo = () => {
             
             if (typeof data.taxesDate === "undefined") data.taxesDate = (car?.taxesDate ?? new Date());
 
-            data.name = `${ firstLetterUppercase(data.manufacture) } ${ firstLetterUppercase(data.model) }`;
-            console.log(data);
-            // await deleteCarById({ _id });
+            data.year = Number(data.year);
+            data.passengers = Number(data.passengers);
+            data.displacement = Number(data.displacement);
 
-            // navigate(`/user`);
+            await updateCarById({ _id, ...data });
+
+            setCar(null);
+            setEdit(false);
+            setUpdate(!update);
         } catch (e) {
             // defaultCatcher(e);
             return setCustomError('Ocurrió un error, intenta de nuevo en unos minutos');
@@ -72,7 +77,7 @@ const VehicleInfo = () => {
         const now = new Date().getTime();
         const insurance = new Date(date).getTime();
 
-        if (insurance > now) return 'danger';
+        if (now > insurance) return 'danger';
 
         return 'success';
     }
@@ -100,7 +105,7 @@ const VehicleInfo = () => {
             }
         }
         !car?.hasOwnProperty('_id') && getVehicle();
-    }, []);
+    }, [update]);
 
     return (
         <div className="container-fluid px-0">
@@ -126,7 +131,7 @@ const VehicleInfo = () => {
                                         showTimeSelect
                                         onChange={ onChange }
                                         onBlur={ onBlur }
-                                        selected={ value ? value : (car?.boughtDate ?? new Date()) }
+                                        selected={ value ? value : (new Date(car?.boughtDate) ?? new Date()) }
                                         className={ `mb-2 form-control form-control-sm rounded-pill shadow-sm ${ errors.boughtDate ? 'is-invalid' : '' }` }
                                     />
                                 )}
@@ -189,12 +194,12 @@ const VehicleInfo = () => {
                                             showTimeSelect
                                             onChange={ onChange }
                                             onBlur={ onBlur }
-                                            selected={ value ? value : (car?.insuranceDate ?? new Date()) }
+                                            selected={ value ? value : (new Date(car.insuranceDate) ?? new Date()) }
                                             className={ `mb-2 form-control form-control-sm rounded-pill shadow-sm ${ errors.insuranceDate ? 'is-invalid' : '' }` }
                                         />
                                     )}
                                 />
-                                : (car?.insuranceDate ? <p className={ `m-0 d-flex align-items-center fw-bold text-${ handleDate(car?.insuranceDate) }` }>{ dateFormat(car?.insuranceDate).split(', ')[0] } { handleDate(car?.taxesDate) === 'success' ? <AiOutlineCheckCircle className="ms-1" size={20}/> : <FiAlertCircle className="ms-1" size={20}/> }</p> : '-')
+                                : (car?.insuranceDate ? <p className={ `m-0 d-flex align-items-center fw-bold text-${ handleDate(car?.insuranceDate) }` }>{ dateFormat(car?.insuranceDate).split(', ')[0] } { handleDate(car?.insuranceDate) === 'success' ? <AiOutlineCheckCircle className="ms-1" size={20}/> : <FiAlertCircle className="ms-1" size={20}/> }</p> : '-')
                             }
                         </div>
                         
@@ -209,7 +214,7 @@ const VehicleInfo = () => {
                                             showTimeSelect
                                             onChange={ onChange }
                                             onBlur={ onBlur }
-                                            selected={ value ? value : (car?.taxesDate ?? new Date()) }
+                                            selected={ value ? value : (new Date(car?.taxesDate) ?? new Date()) }
                                             className={ `mb-2 form-control form-control-sm rounded-pill shadow-sm ${ errors.taxesDate ? 'is-invalid' : '' }` }
                                         />
                                     )}

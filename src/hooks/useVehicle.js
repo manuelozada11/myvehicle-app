@@ -73,8 +73,23 @@ export const useVehicle = () => {
         if (response.status === 500) throw customError('Error en el servidor', 500);
     }
 
+    const updateCarById = async ({ _id, ...data }) => {
+        const response = await fetch(`${ getStorageValue('apiDomain') }/vehicles/${ _id }`, {
+            method: 'PATCH',
+            headers: {
+                "content-type": "application/json",
+                authorization: `Bearer ${ getStorageValue('token') }`
+            },
+            body: JSON.stringify(data)
+        });
+        
+        if (response.status === 404) throw customError('No se encontro ningun vehiculo', 404);
+        if (response.status === 500) throw customError('Error en el servidor', 500);
+    }
+
     return {
         createVehicle,
+        updateCarById,
         getVehiclesByUser,
         getVehiclesById,
         getVehiclesInfoById,

@@ -29,7 +29,7 @@ export const firstLetterUppercase = (value) => {
 }
 
 export const dateFormat = (date) => {
-    return `${new Intl.DateTimeFormat('en-US', { dateStyle: 'short', timeStyle: "medium" }).format(date)}`;
+    return `${new Intl.DateTimeFormat('en-US', { dateStyle: 'short', timeStyle: "medium" }).format(new Date(date))}`;
 }
 
 export const orderBy = (array, by) => {
