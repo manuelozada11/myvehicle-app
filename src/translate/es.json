@@ -1,4 +1,8 @@
 {
+    "users.home.title": "Tus vehiculos",
+    "users.home.subtitle": "Hola",
+    "users.home.button.add": "Agregar",
+    "users.home.button.signout": "Salir",
     "users.signin.title.sign": "INICIAR",
     "users.signin.title.in": "SESIÓN",
     "users.signin.user": "Usuario",

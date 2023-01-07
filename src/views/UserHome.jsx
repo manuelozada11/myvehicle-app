@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useVehicle, useAuth } from "../hooks";
 import { FiLogOut } from 'react-icons/fi';
-import { firstLetterUppercase, getStorageValue, setStorageValue } from "../common/utils";
+import { firstLetterUppercase, getStorageValue, setStorageValue, translate } from "../common/utils";
 // components
 import Card from '../components/Card';
 
@@ -57,14 +57,14 @@ const UserHome = () => {
     return (
         <div className="container-fluid px-0">
             <div className="px-4 py-2">
-                <p className="mb-2 mt-3">Hola, { user ? firstLetterUppercase(user.name) : 'user' }!</p>
-                <h1 className="fw-bolder">Tus vehiculos</h1>
+                <p className="mb-2 mt-3">{ translate("users.home.subtitle") }, { user ? firstLetterUppercase(user.name) : 'user' }!</p>
+                <h1 className="fw-bolder">{ translate("users.home.title") }</h1>
             </div>
 
             <div className="container-fluid d-flex justify-content-center pb-2">
-                <button type="button" onClick={ onAddVehicle } className="btn btn-outline-primary rounded-pill m-2">Agregar</button>
+                <button type="button" onClick={ onAddVehicle } className="btn btn-outline-primary rounded-pill m-2">{translate("users.home.button.add")}</button>
                 <button type="button" onClick={ onGoHome } className="btn btn-primary rounded-pill m-2 d-flex align-items-center">
-                    <FiLogOut className="me-1" size={20} /> Salir
+                    <FiLogOut className="me-1" size={20} /> {translate("users.home.button.signout")}
                 </button>
             </div>
 
