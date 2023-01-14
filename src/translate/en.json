@@ -18,6 +18,8 @@
     "users.signin.pwd": "Password",
     "users.signin.clear": "Clear",
     "users.signin.submit": "Submit",
+    "vehicle.add.title": "Add vehicle",
+    "vehicle.add.subtitle": "Type the information requested",
     "vehicle.details.year": "year",
     "vehicle.details.displacement": "distance traveled",
     "vehicle.details.energytype": "fuel type",

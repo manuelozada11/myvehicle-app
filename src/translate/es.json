@@ -18,6 +18,8 @@
     "users.signin.pwd": "Contraseña",
     "users.signin.clear": "Limpiar",
     "users.signin.submit": "Aceptar",
+    "vehicle.add.title": "Agregar vehículo",
+    "vehicle.add.subtitle": "Introduce los datos solicitados",
     "vehicle.details.year": "Año",
     "vehicle.details.displacement": "Distancia recorrida",
     "vehicle.details.energytype": "Combustible",

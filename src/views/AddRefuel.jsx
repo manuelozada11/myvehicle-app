@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { useMaintenance } from "../hooks";
 import { useForm, Controller } from "react-hook-form";
 import { firstLetterUppercase, getStorageValue, translate } from "../common/utils";
-import BackButton from '../components/BackButton';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css'
 import { useEffect } from "react";
+import CarTitle from "../components/CarTitle";
 
 const AddRefuel = () => {
     let navigate = useNavigate();
@@ -20,10 +20,6 @@ const AddRefuel = () => {
     const handleColor = (time) => {
         return time.getHours() > 12 ? "text-success" : "text-error";
     };
-    
-    const onGoBack = () => {
-        navigate(`/refuels/v/${ vehicle._id }`);
-    }
 
     const onCreateRefuel = async (data) => {
         try {
@@ -98,18 +94,10 @@ const AddRefuel = () => {
     return (
         <div className="container-fluid px-0">
             <div className="px-4 pt-4 pb-3 row mx-0">
-                <div className="col-9 ps-0">
-                    <h1 className="m-0 fw-bold">
-                        {translate("vehicle.refuels.add.title")}
-                    </h1>
-                    <p className="m-0">
-                        {translate("vehicle.refuels.add.subtitle")}
-                    </p>
-                </div>
-
-                <div className="pe-0 col-3 d-flex justify-content-end align-items-center">
-                    <BackButton onClick={ onGoBack } />
-                </div>
+                <CarTitle  
+                    backTo={ vehicle ? `/refuels/v/${ vehicle._id }` : ""}
+                    title={translate("vehicle.refuels.add.title")} 
+                    subtitle={translate("vehicle.refuels.add.subtitle")} />
             </div>
 
             <form onSubmit={ handleSubmit(onCreateRefuel) } className="m-0 p-0">

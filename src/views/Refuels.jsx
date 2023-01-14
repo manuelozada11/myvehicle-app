@@ -2,13 +2,13 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useMaintenance } from "../hooks";
-import BackButton from "../components/BackButton";
-import { getStorageValue, translate } from "../common/utils";
+import { translate } from "../common/utils";
 import { IoAdd } from 'react-icons/io5';
 import { BsCalendarCheck, BsClock } from 'react-icons/bs';
 
 // components
 import Card from '../components/Card';
+import CarTitle from "../components/CarTitle";
 import { dateFormat, orderBy, round } from "../common/utils";
 
 const Refuels = () => {
@@ -18,32 +18,11 @@ const Refuels = () => {
     const [refuels, setRefuels] = useState(null);
 
     const onGoBack = async () => {
-        navigate(`/vehicle/${ _id }`);
+        navigate();
     }
 
     const onAddRefuel = async () => {
         navigate('/refuels/add');
-    }
-
-    const handleTitle = () => {
-        const car = getStorageValue('vehicle');
-
-        return (
-            <>
-                <div className="col-9 ps-0">
-                    <h1 className="m-0 fw-bold">
-                        { car.fullname }
-                    </h1>
-                    <p className="m-0">
-                        { car.plateNumber }
-                    </p>
-                </div>
-
-                <div className="pe-0 col-3 d-flex justify-content-end align-items-center">
-                    <BackButton onClick={ onGoBack } />
-                </div>
-            </>
-        );
     }
 
     const handleRefuels = () => {
@@ -95,7 +74,7 @@ const Refuels = () => {
     return (
         <div className="container-fluid px-0">
             <div className="px-4 pt-4 pb-3 row mx-0">
-                { handleTitle() }
+                <CarTitle backTo={`/vehicle/${ _id }`} />
             </div>
 
             <div className="d-flex justify-content-center pb-3">

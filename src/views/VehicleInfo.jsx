@@ -5,24 +5,25 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useVehicle } from "../hooks/useVehicle";
 import { AiOutlineEdit, AiOutlineCheckCircle } from 'react-icons/ai';
 import { FiAlertCircle } from 'react-icons/fi';
+import { IoTrashOutline, IoDocumentTextOutline } from 'react-icons/io5';
+import { RiGasStationFill, RiShareForwardLine, RiCalendarCheckLine } from 'react-icons/ri';
 import { useForm, Controller } from "react-hook-form";
-import { getStorageValue, dateFormat } from "../common/utils";
-import BackButton from "../components/BackButton";
+import { dateFormat, translate } from "../common/utils";
 import { VEHICLE_TYPE } from "../constants/vehicles";
+import CustomQrCode from "../components/CustomQrCode";
+import CarTitle from "../components/CarTitle";
 
 const VehicleInfo = () => {
     let navigate = useNavigate();
-    const { register, handleSubmit, control, formState: { errors }, reset, setError } = useForm();
+    const { register, handleSubmit, control, formState: { errors }, reset } = useForm();
     const { _id } = useParams();
-    const { getVehiclesById, updateCarById } = useVehicle();
+    const { getVehiclesById, updateCarById, deleteCarById } = useVehicle();
     const [car, setCar] = useState(null);
     const [edit, setEdit] = useState(false);
     const [update, setUpdate] = useState(false);
     const [error, setCustomError] = useState(null);
-    
-    const onGoBack = () => {
-        navigate(`/vehicle/${ car._id }`);
-    }
+    const [confirm, setConfirm] = useState(false);
+    const [qrcode, setQrcode] = useState(false);
 
     const onEditCar = async (data) => {
         try {
@@ -51,26 +52,7 @@ const VehicleInfo = () => {
         setEdit(false);
         reset();
         setCustomError(null);
-    }
-    
-    const handleTitle = () => {
-        const car = getStorageValue('vehicle');
-        return (
-            <>
-                <div className="col-9 ps-0">
-                    <h1 className="m-0 fw-bold">
-                        { car.fullname }
-                    </h1>
-                    <p className="m-0">
-                        { car.plateNumber }
-                    </p>
-                </div>
-
-                <div className="pe-0 col-3 d-flex justify-content-end align-items-center">
-                    <BackButton onClick={ onGoBack } />
-                </div>
-            </>
-        );
+        setConfirm(false);
     }
 
     const handleDate = (date) => {
@@ -95,6 +77,20 @@ const VehicleInfo = () => {
         })
     }
 
+    const onDeleteCar = async (data) => {
+        try {
+            if (data.delete !== car.plateNumber) return setCustomError('La placa no coincide');
+
+            await deleteCarById({ _id });
+
+            navigate(`/user`);
+        } catch (e) {
+            // defaultCatcher(e);
+
+            return setCustomError('Ocurrió un error, intenta de nuevo en unos minutos');
+        }
+    }
+
     useEffect(() => {
         const getVehicle = async () => {
             try {
@@ -110,9 +106,33 @@ const VehicleInfo = () => {
     return (
         <div className="container-fluid px-0">
             <div className="px-4 pt-4 pb-3 row mx-0">
-                { handleTitle() }
+                <CarTitle backTo={ `/vehicle/${ _id }` } />
             </div>
             
+            <div className="d-flex justify-content-center">
+                <button type="button" onClick={ () => setQrcode(true) } className="p-2 btn rounded-circle btn-outline-danger m-2"><RiShareForwardLine size={ 30 } /></button>
+                {/* { !confirm && <button type="button" onClick={ () => setConfirm(true) } className="p-2 btn rounded-circle btn-outline-danger m-2"><IoTrashOutline size={ 27 } /></button> } */}
+            </div>
+            
+            { confirm &&
+                <form onSubmit={ handleSubmit(onDeleteCar) }
+                    className="py-3 px-4 d-flex flex-column">
+                    <p className="mb-1">{translate("vehicle.details.delete.title1")} <span className="fst-italic fw-bold">{ (car?.hasOwnProperty('plateNumber') ? `${ car.plateNumber }` : '') }</span> {translate("vehicle.details.delete.title2")}</p>
+                    <input type="text" 
+                        {...register("delete", { required: true })}
+                        className={ `mb-2 form-control form-control-sm rounded-pill shadow-sm ${ errors.delete ? 'is-invalid' : '' }` } />
+
+                    <div className="row mx-0">
+                        <button type="button" onClick={ onCancel } className="my-2 btn btn-block btn-sm btn-danger rounded-pill">{translate("vehicle.details.cancel")}</button>
+                        <button type="submit" className="my-2 btn btn-block btn-sm btn-outline-danger rounded-pill">{translate("vehicle.details.accept")}</button>
+                    </div>
+                    
+                    <div className="text-center">
+                        { error && <p className="px-3 pt-3 text-danger">{ error }</p> }
+                    </div>
+                </form>
+            }
+
             <form onSubmit={ handleSubmit(onEditCar) }>
                 <div className="p-4 m-3 shadow border"
                     style={{ borderRadius: "1.5rem", backgroundColor: "#e4e4e4" }}>
@@ -341,6 +361,13 @@ const VehicleInfo = () => {
                     </div>
                 }
             </form>
+            
+            { qrcode &&
+                <CustomQrCode 
+                    value={ `${ car?._id }/${ 1 }` }
+                    onClose={ () => setQrcode(false) }
+                />
+            }
         </div>
     );
 }

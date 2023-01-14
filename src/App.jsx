@@ -10,6 +10,7 @@ import AddVehicle from './views/AddVehicle';
 import Refuels from './views/Refuels';
 import AddRefuel from './views/AddRefuel';
 import VehicleInfo from './views/VehicleInfo';
+import MaintenanceHome from './views/MaintenanceHome';
 // views
 import Home from './views/Home';
 import Login from './views/Login';
@@ -70,11 +71,25 @@ const App = () => {
               </PrivateRoute>
             } />
 
+            <Route path='maintenance/:_id' element={
+              <PrivateRoute>
+                <MaintenanceHome />
+              </PrivateRoute>
+            } />
+
             <Route path=':_id' element={
               <PrivateRoute>
                 <VehicleDetails />
               </PrivateRoute>
             } />
+          </Route>
+
+          <Route path='maintenance'>
+            <Route path='v/:_id' element={
+              <PrivateRoute>
+                <MaintenanceHome />
+              </PrivateRoute>
+            }/>
           </Route>
         </Routes>
       </BrowserRouter>

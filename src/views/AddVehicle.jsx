@@ -2,8 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useVehicle } from "../hooks/useVehicle";
 import { useForm } from "react-hook-form";
-import { firstLetterUppercase } from "../common/utils";
-import BackButton from '../components/BackButton';
+import { firstLetterUppercase, translate } from "../common/utils";
+import CarTitle from "../components/CarTitle";
 
 const AddVehicle = () => {
     let navigate = useNavigate();
@@ -11,10 +11,6 @@ const AddVehicle = () => {
     const [gasoline, setGasoline] = useState(true);
     const { createVehicle } = useVehicle();
     const [error, setError] = useState(null);
-    
-    const onGoBack = () => {
-        navigate('/user');
-    }
 
     const onCreateCar = async (data) => {
         try {
@@ -43,18 +39,10 @@ const AddVehicle = () => {
     return (
         <div className="container-fluid px-0">
             <div className="px-4 pt-4 pb-3 row mx-0">
-                <div className="col-9 ps-0">
-                    <h1 className="m-0 fw-bold">
-                        Agregar vehiculo
-                    </h1>
-                    <p className="m-0">
-                        Introduce los datos solicitados
-                    </p>
-                </div>
-
-                <div className="pe-0 col-3 d-flex justify-content-end align-items-center">
-                    <BackButton onClick={ onGoBack } />
-                </div>
+                <CarTitle
+                    backTo="/user"
+                    title={translate("vehicle.add.title")}
+                    subtitle={translate("vehicle.add.subtitle")} />
             </div>
 
             <form onSubmit={ handleSubmit(onCreateCar) } className="m-0 p-0">
