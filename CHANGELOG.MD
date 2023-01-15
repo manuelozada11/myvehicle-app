@@ -1,5 +1,9 @@
 ## App Versions
 
+### (`1.9.0`) Jan 14, 2023
+1. Change vehicle title by a component to be able to reuse it
+2. Add maintenance home screen translated
+
 ### (`1.8.0`) Jan 7, 2023
 1. Add refuel flow translation
 2. Fix add refuel, now you don't need to select fuel type and also you can enter distance travaled

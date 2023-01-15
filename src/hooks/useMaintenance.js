@@ -35,8 +35,25 @@ export const useMaintenance = () => {
         return result;
     }
 
+    const getMaintenanceStats = async ({ _id }) => {
+        const response = await fetch(`${ getStorageValue('apiDomain') }/maintenances/stats/${ _id }`, {
+            headers: {
+                "content-type": "application/json",
+                authorization: `Bearer ${ getStorageValue('token') }`
+            }
+        });
+        if (response.status === 400) throw customError('Ocurrio un error', 400);
+        if (response.status === 404) throw customError('No encontramos estadísticas', 404);
+        if (response.status === 500) throw customError('Error en el servidor', 500);
+
+        const { stats } = await response.json();
+
+        return stats;
+    }
+
     return {
         getRefuelsByVehicle,
-        createRefuel
+        createRefuel,
+        getMaintenanceStats
     }
 }

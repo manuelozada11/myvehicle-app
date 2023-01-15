@@ -36,5 +36,8 @@
     "vehicle.refuels.add.amount": "Monto",
     "vehicle.refuels.add.location": "Ubicación",
     "vehicle.refuels.add.displacement": "Km",
-    "vehicle.refuels.add.date": "Fecha"
+    "vehicle.refuels.add.date": "Fecha",
+    "vehicle.maintenance.home.quantity": "Cant. Mantenimientos",
+    "vehicle.maintenance.home.battery": "Bateria",
+    "vehicle.maintenance.home.tires": "Llantas"
 }

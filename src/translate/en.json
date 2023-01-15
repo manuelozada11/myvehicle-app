@@ -36,5 +36,8 @@
     "vehicle.refuels.add.amount": "Amount",
     "vehicle.refuels.add.location": "Location",
     "vehicle.refuels.add.displacement": "Km",
-    "vehicle.refuels.add.date": "Date"
+    "vehicle.refuels.add.date": "Date",
+    "vehicle.maintenance.home.quantity": "Maintenance Qty.",
+    "vehicle.maintenance.home.battery": "Battery",
+    "vehicle.maintenance.home.tires": "Tires"
 }

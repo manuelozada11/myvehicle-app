@@ -17,10 +17,6 @@ const Refuels = () => {
     const { getRefuelsByVehicle } = useMaintenance();
     const [refuels, setRefuels] = useState(null);
 
-    const onGoBack = async () => {
-        navigate();
-    }
-
     const onAddRefuel = async () => {
         navigate('/refuels/add');
     }

@@ -69,8 +69,21 @@
   box-shadow: 0 0.5rem 1rem #74747426;
   border-radius: 1.5rem;
   text-align: center;
+  transition: 650ms;
 }
 
+.card-stat-gray {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 1.5rem;
+  background-color: #e4e4e4;
+  box-shadow: 0 0.5rem 1rem #74747426;
+  border-radius: 1.5rem;
+  text-align: center;
+  transition: 650ms;
+}
 
 /*  ---- CUSTOM COMPONENTS ---  */
 .card-custom {
