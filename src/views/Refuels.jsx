@@ -29,8 +29,8 @@ const Refuels = () => {
                 const date = dateFormat(new Date(refuel.date)).split(', ')[0];
                 const time = dateFormat(new Date(refuel.date)).split(', ')[1];
                 const subtitle = <div className="m-0 fw-bold card-subtitle mt-1" style={{ fontSize: "0.8rem" }} >
-                    <p className="mx-0 mt-0 mb-1"><BsCalendarCheck size={ 16 } className="me-1" /> { date }</p>
-                    <p className="m-0"><BsClock size={ 16 } className="me-1" /> { time }</p>
+                    <p className="mx-0 mt-0 mb-1 d-flex align-items-center"><BsCalendarCheck size={ 16 } className="me-2" /> { date }</p>
+                    <p className="m-0 d-flex align-items-center"><BsClock size={ 16 } className="me-2" /> { time }</p>
                 </div>;
 
                 return (

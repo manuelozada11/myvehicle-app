@@ -37,10 +37,10 @@ const Sidebar = () => {
 
                 { getStorageValue('token')
                     ? <>
-                        <Link onClick={ onProfile } to='' className='py-3 d-flex flex-inline'>
+                        {/* <Link onClick={ onProfile } to='' className='py-3 d-flex flex-inline'>
                             <FaUser color='black' size={25} />
                             <h5 className='mx-3'>{translate("sidebar.option2.profile")}</h5>
-                        </Link>
+                        </Link> */}
 
                         <Link onClick={ onSignOut } to='' className='py-3 d-flex flex-inline'>
                             <FiLogOut color='black' size={25} />

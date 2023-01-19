@@ -1,5 +1,12 @@
 ## App Versions
 
+### (`1.9.1`) Jan 18, 2023
+1. Bug fixed up, it couldn't add new refuels
+2. When person add new refuel, now go back to refuels
+3. Hide profile icon from sidebar
+4. Add translation for add new vehicle screen
+5. Add translation for vehicle info screen
+
 ### (`1.9.0`) Jan 14, 2023
 1. Change vehicle title by a component to be able to reuse it
 2. Add maintenance home screen translated

@@ -41,7 +41,7 @@ const AddRefuel = () => {
 
             await createRefuel({ _id, data });
 
-            navigate(`/vehicle/${ _id }`);
+            navigate(`/refuels/v/${ _id }`);
         } catch (e) {
             // defaultCatcher(e);
 
@@ -107,7 +107,7 @@ const AddRefuel = () => {
                         <div className="col-6 ps-0">
                             <p className="my-1 fw-bold"><span className="text-danger fw-bold">*</span> {translate("vehicle.refuels.add.lts")}</p>
                             <input type="number" 
-                                step="0.01"
+                                step="0.001"
                                 className={ `form-control form-control-sm rounded-pill ${ errors.quantity ? 'is-invalid' : '' }` }
                                 {...register("quantity", { required: true })} />
                         </div>

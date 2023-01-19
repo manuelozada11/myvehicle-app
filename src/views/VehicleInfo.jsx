@@ -137,11 +137,11 @@ const VehicleInfo = () => {
                 <div className="p-4 m-3 shadow border"
                     style={{ borderRadius: "1.5rem", backgroundColor: "#e4e4e4" }}>
                     <h1 className="mb-3" style={{ fontWeight: '900' }}>
-                        Detalles { !edit && <AiOutlineEdit className="ms-1 cursor-pointer" size={ 27 } onClick={ () => setEdit(true) } /> }
+                        {translate("vehicle.information.title")} { !edit && <AiOutlineEdit className="ms-1 cursor-pointer" size={ 27 } onClick={ () => setEdit(true) } /> }
                     </h1>
 
                     <div className="my-2">
-                        <h5 className={ `fw-bold ${ edit ? 'mx-0 mt-0 mb-2' : 'm-0' }` }>Fecha de compra</h5>
+                        <h5 className={ `fw-bold ${ edit ? 'mx-0 mt-0 mb-2' : 'm-0' }` }>{translate("vehicle.information.boughtDate")}</h5>
                         { edit ?
                             <Controller
                                 control={control}
@@ -162,7 +162,7 @@ const VehicleInfo = () => {
 
                     <div className="row mx-0 my-2">
                         <div className="col-6 ps-0">
-                            <h5 className={ `fw-bold ${ edit ? 'mx-0 mt-0 mb-2' : 'm-0' }` }>Color</h5>
+                            <h5 className={ `fw-bold ${ edit ? 'mx-0 mt-0 mb-2' : 'm-0' }` }>{translate("vehicle.information.color")}</h5>
                             { edit ?    
                                 <input type="text" 
                                     {...register("color", { required: true })}
@@ -172,7 +172,7 @@ const VehicleInfo = () => {
                         </div>
                         
                         <div className="col-6 p-0">
-                            <h5 className={ `fw-bold ${ edit ? 'mx-0 mt-0 mb-2' : 'm-0' }` }>Pasajeros</h5>
+                            <h5 className={ `fw-bold ${ edit ? 'mx-0 mt-0 mb-2' : 'm-0' }` }>{translate("vehicle.information.passengers")}</h5>
                             { edit ?    
                                 <input type="number" 
                                     {...register("passengers", { required: true })}
@@ -183,7 +183,7 @@ const VehicleInfo = () => {
                     </div>
                     
                     <div className="my-2">
-                        <h5 className={ `fw-bold ${ edit ? 'mx-0 mt-0 mb-2' : 'm-0' }` }>Tipo</h5>
+                        <h5 className={ `fw-bold ${ edit ? 'mx-0 mt-0 mb-2' : 'm-0' }` }>{translate("vehicle.information.vehicleType")}</h5>
                         { edit ?    
                             <select {...register("vehicleType", { required: true })}
                                 className={ `mb-3 form-select form-select-sm rounded-pill shadow-sm ${ errors.vehicleType ? 'is-invalid' : '' }` } >
@@ -193,7 +193,7 @@ const VehicleInfo = () => {
                     </div>
                                     
                     <div className="my-2">
-                        <h5 className={ `fw-bold ${ edit ? 'mx-0 mt-0 mb-2' : 'm-0' }` }>Serial Carroceria</h5>
+                        <h5 className={ `fw-bold ${ edit ? 'mx-0 mt-0 mb-2' : 'm-0' }` }>{translate("vehicle.information.serial")}</h5>
                         { edit ?    
                             <input type="text" 
                                 {...register("bodySerial", { required: true })}
@@ -204,7 +204,7 @@ const VehicleInfo = () => {
                     
                     <div className="row mx-0 my-2">
                         <div className="col-6 ps-0">
-                            <h5 className={ `fw-bold ${ edit ? 'mx-0 mt-0 mb-2' : 'm-0' }` }>Seguro</h5>
+                            <h5 className={ `fw-bold ${ edit ? 'mx-0 mt-0 mb-2' : 'm-0' }` }>{translate("vehicle.information.insurance")}</h5>
                             { edit ?
                                 <Controller
                                     control={control}
@@ -224,7 +224,7 @@ const VehicleInfo = () => {
                         </div>
                         
                         <div className="col-6 p-0">
-                            <h5 className={ `fw-bold ${ edit ? 'mx-0 mt-0 mb-2' : 'm-0' } `}>Placa</h5>
+                            <h5 className={ `fw-bold ${ edit ? 'mx-0 mt-0 mb-2' : 'm-0' } `}>{translate("vehicle.information.taxes")}</h5>
                             { edit ?
                                 <Controller
                                     control={control}
@@ -251,7 +251,7 @@ const VehicleInfo = () => {
                     style={{ borderRadius: "1.5rem", backgroundColor: "#b6e2d9" }}>
                     <div className="row mx-0">
                         <div className="col-4 ps-0 py-2">
-                            <h5 className={ `fw-bold ${ edit ? 'mx-0 mt-0 mb-2' : 'm-0' } `}>Año</h5>
+                            <h5 className={ `fw-bold ${ edit ? 'mx-0 mt-0 mb-2' : 'm-0' } `}>{translate("vehicle.add.year")}</h5>
                             { edit ?    
                                 <input type="number" 
                                     {...register("year", { required: true })}
@@ -261,7 +261,7 @@ const VehicleInfo = () => {
                         </div>
                         
                         <div className="col-8 pe-0 py-2">
-                            <h5 className={ `fw-bold ${ edit ? 'mx-0 mt-0 mb-2' : 'm-0' } `}>Distancia recorrida</h5>
+                            <h5 className={ `fw-bold ${ edit ? 'mx-0 mt-0 mb-2' : 'm-0' } `}>{translate("vehicle.add.displacement")}</h5>
                             { edit ?    
                                 <input type="number" 
                                     {...register("displacement", { required: true })}
@@ -273,7 +273,7 @@ const VehicleInfo = () => {
                     
                     <div className="row mx-0">
                         <div className="col-6 ps-0 py-2">
-                            <h5 className={ `fw-bold ${ edit ? 'mx-0 mt-2 mb-2' : 'm-0' } `}>Marca</h5>
+                            <h5 className={ `fw-bold ${ edit ? 'mx-0 mt-2 mb-2' : 'm-0' } `}>{translate("vehicle.add.manufacturer")}</h5>
                             { edit ?    
                                 <input type="text" 
                                     {...register("manufacture", { required: true })}
@@ -283,7 +283,7 @@ const VehicleInfo = () => {
                         </div>
                         
                         <div className="col-6 pe-0 py-2">
-                            <h5 className={ `fw-bold ${ edit ? 'mx-0 mt-2 mb-2' : 'm-0' } `}>Modelo</h5>
+                            <h5 className={ `fw-bold ${ edit ? 'mx-0 mt-2 mb-2' : 'm-0' } `}>{translate("vehicle.add.model")}</h5>
                             { edit ?    
                                 <input type="text" 
                                     {...register("model", { required: true })}
@@ -294,7 +294,7 @@ const VehicleInfo = () => {
                     </div>
                     
                     <div className="my-2">
-                        <h5 className={ `fw-bold ${ edit ? 'mx-0 mt-2 mb-2' : 'm-0' } `}>Número de Placa</h5>
+                        <h5 className={ `fw-bold ${ edit ? 'mx-0 mt-2 mb-2' : 'm-0' } `}>{translate("vehicle.add.plateNumber")}</h5>
                         { edit ?    
                             <input type="text" 
                                 {...register("plateNumber", { required: true })}
@@ -304,7 +304,7 @@ const VehicleInfo = () => {
                     </div>
 
                     <div className="my-2">
-                        <h4 className="m-0 fw-bold">Combustible</h4>
+                        <h4 className="m-0 fw-bold">{translate("vehicle.add.energyType")}</h4>
                         { edit ? 
                             <div className="d-flex">
                                 <div className="me-4 form-check">
@@ -351,8 +351,8 @@ const VehicleInfo = () => {
                 { edit &&
                     <div className="py-2 px-4 d-flex flex-column">
                         <div className="row mx-0">
-                            <button type="button" onClick={ onCancel } className="my-2 btn btn-block btn-sm btn-outline-primary rounded-pill">Cancelar</button>
-                            <button type="submit" className="my-2 btn btn-block btn-sm btn-primary rounded-pill">Aceptar</button>
+                            <button type="button" onClick={ onCancel } className="my-2 btn btn-block btn-sm btn-outline-primary rounded-pill">{translate("vehicle.details.cancel")}</button>
+                            <button type="submit" className="my-2 btn btn-block btn-sm btn-primary rounded-pill">{translate("users.signin.submit")}</button>
                         </div>
                         
                         <div className="text-center">

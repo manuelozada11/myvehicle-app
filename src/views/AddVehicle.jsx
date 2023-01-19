@@ -49,21 +49,21 @@ const AddVehicle = () => {
                 <div className="p-4 m-3 shadow border"
                     style={{ borderRadius: "1.5rem", backgroundColor: "#e4e4e4" }}>
                     <div className="my-2">
-                        <p className="mb-1 fw-bold"><span className="text-danger fw-bold">*</span> Marca</p>
+                        <p className="mb-1 fw-bold"><span className="text-danger fw-bold">*</span> {translate("vehicle.add.manufacturer")}</p>
                         <input type="text" 
                             className={ `form-control form-control-sm rounded-pill ${ errors.manufacture ? 'is-invalid' : '' }` }
                             {...register("manufacture", { required: true })} />
                     </div>
                     
                     <div className="my-2">
-                        <p className="mb-1 mt-3 fw-bold"><span className="text-danger fw-bold">*</span> Modelo</p>
+                        <p className="mb-1 mt-3 fw-bold"><span className="text-danger fw-bold">*</span> {translate("vehicle.add.model")}</p>
                         <input type="text" 
                             className={ `form-control form-control-sm rounded-pill ${ errors.model ? 'is-invalid' : '' }` }
                             {...register("model", { required: true })} />
                     </div>
 
                     <div className="my-2">
-                        <p className="mb-1 mt-3 fw-bold"><span className="text-danger fw-bold">*</span> Número de placa</p>
+                        <p className="mb-1 mt-3 fw-bold"><span className="text-danger fw-bold">*</span> {translate("vehicle.add.plateNumber")}</p>
                         <input type="text" 
                             className={ `form-control form-control-sm rounded-pill ${ errors.plateNumber ? 'is-invalid' : '' }` }
                             {...register("plateNumber", { required: true })} />
@@ -71,14 +71,14 @@ const AddVehicle = () => {
                     
                     <div className="row my-2 mx-0">
                         <div className="col-6 ps-0">
-                            <p className="mb-1 mt-1 fw-bold">Año</p>
+                            <p className="mb-1 mt-1 ms-2 fw-bold">{translate("vehicle.add.year")}</p>
                             <input type="number" 
                                 className="form-control form-control-sm rounded-pill"
                                 {...register("year")} />
                         </div>
 
                         <div className="col-6 pe-0">
-                            <p className="mb-1 mt-1 fw-bold">Km</p>
+                            <p className="mb-1 mt-1 ms-2 fw-bold">{translate("vehicle.add.displacement")}</p>
                             <input type="number" 
                                 className="form-control form-control-sm rounded-pill" 
                                 {...register("displacement")} />
@@ -86,7 +86,7 @@ const AddVehicle = () => {
                     </div>
 
                     <div className="my-2">
-                        <p className="mb-1 mt-3 fw-bold"><span className="text-danger fw-bold">*</span> Tipo de energía</p>
+                        <p className="mb-1 mt-3 fw-bold"><span className="text-danger fw-bold">*</span> {translate("vehicle.add.energyType")}</p>
                         <div className="d-flex">
                             <div className="me-3 form-check">
                                 <input className="form-check-input"
@@ -97,7 +97,7 @@ const AddVehicle = () => {
                                     checked={ gasoline }
                                     onChange={ () => setGasoline(true) } />
                                 <label className="form-check-label" htmlFor="radioGasoline">
-                                    Combustible
+                                    {translate("vehicle.add.fuel")}
                                 </label>
                             </div>
 
@@ -110,7 +110,7 @@ const AddVehicle = () => {
                                     checked={ !gasoline }
                                     onChange={ () => setGasoline(false) } />
                                 <label className="form-check-label" htmlFor="radioElectric">
-                                    Eléctrico
+                                    {translate("vehicle.add.electric")}
                                 </label>
                             </div>
                         </div>
@@ -166,10 +166,10 @@ const AddVehicle = () => {
                     <button type="reset"
                         onClick={ onReset }
                         className="btn btn-block rounded-pill btn-outline-primary mx-3 my-2">
-                        Limpiar
+                        {translate("users.signin.clear")}
                     </button>
                     <button type="submit" className="btn btn-block rounded-pill btn-primary mx-3 my-2">
-                        Aceptar
+                        {translate("users.signin.submit")}
                     </button>
                 </div>
             </form>
