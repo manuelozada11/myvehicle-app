@@ -43,14 +43,14 @@ const Login = () => {
             <form onSubmit={ handleSubmit(onSignIn) } className="p-5 d-flex flex-column align-items-center">
                 <div className="mb-4">
                     <h6><span className="text-danger fw-bold">*</span> {translate("users.signin.user")}:</h6>
-                    <input className={ `form-control ${ errors.username ? 'is-invalid' : '' }` }
+                    <input className={ `form-control rounded-pill ${ errors.username ? 'is-invalid' : '' }` }
                         {...register("username", { required: { value: true, message: 'Campo obligatorio' } })} type="text" />
                     { errors.username && <p className="mt-1 text-danger">{ errors.username.message }</p> }
                 </div>
 
                 <div className="mb-4">
                     <h6><span className="text-danger fw-bold">*</span> {translate("users.signin.pwd")}:</h6>
-                    <input className={ `form-control ${ errors.password ? 'is-invalid' : '' }` }
+                    <input className={ `form-control rounded-pill ${ errors.password ? 'is-invalid' : '' }` }
                         {...register("password", { required: { value: true, message: 'Campo obligatorio' } })} type="password" />
                     { errors.password && <p className="mt-1 text-danger">{ errors.password.message }</p> }
                 </div>
@@ -60,8 +60,8 @@ const Login = () => {
                 </div>
 
                 <div className="p-2">
-                    <button className="btn btn-outline-primary m-2" onClick={ onReset } type="reset">{translate("users.signin.clear")}</button>
-                    <button className="btn btn-primary m-2" type="submit">{translate("users.signin.submit")}</button>
+                    <button className="btn btn-outline-primary rounded-pill m-2" onClick={ onReset } type="reset">{translate("users.signin.clear")}</button>
+                    <button className="btn btn-primary rounded-pill m-2" type="submit">{translate("users.signin.submit")}</button>
                 </div>
             </form>
         </div>
