@@ -1,17 +1,19 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useVehicle } from "../hooks/useVehicle";
+import { useVehicle } from "../hooks";
 import { useForm } from "react-hook-form";
 import { firstLetterUppercase, translate } from "../common/utils";
 import { MdQrCodeScanner } from "react-icons/md";
 import CarTitle from "../components/CarTitle";
+import CustomQrReader from "../components/CustomQrReader";
 
 const AddVehicle = () => {
     let navigate = useNavigate();
     const { register, handleSubmit, formState: { errors }, clearErrors, reset } = useForm();
+    const { createVehicle, getVehicleTransfered } = useVehicle();
     const [gasoline, setGasoline] = useState(true);
-    const { createVehicle } = useVehicle();
     const [error, setError] = useState(null);
+    const [showQrReader, setShowQrReader] = useState(null);
 
     const onCreateCar = async (data) => {
         try {
@@ -28,7 +30,7 @@ const AddVehicle = () => {
         } catch (e) {
             // defaultCatcher(e);
 
-            return setError('Ocurrió un error, intenta de nuevo en unos minutos');
+            return setError(translate("vehicle.api.error.wentWrong"));
         }
     }
 
@@ -37,12 +39,32 @@ const AddVehicle = () => {
         setError(null);
     }
 
+    const onError = (error) => {
+        console.log(error);
+    }
+
+    const onScan = async (data) => {
+        if (data) {
+            try {
+                if (data?.includes("//")) {
+                    const [ vehicleId, user ] = data.split('//');
+                    await getVehicleTransfered({ _id: vehicleId, user: { lastOwner: user }});
+
+                    navigate(`/user`);
+                }
+                setShowQrReader(false);
+            } catch (e) {
+                return setError(translate("vehicle.api.error.wentWrong"));
+            }
+        }
+    }
+
     return (
         <div className="container-fluid px-0">
             <div className="px-4 pt-4 pb-3 row mx-0">
                 <CarTitle
                     backTo="/user"
-                    title={ <>{translate("vehicle.add.title")} <MdQrCodeScanner className="ms-2" /></>}
+                    title={ <>{translate("vehicle.add.title")} <MdQrCodeScanner className="ms-2" onClick={ () => setShowQrReader(true) } /></>}
                     subtitle={translate("vehicle.add.subtitle")} />
             </div>
 
@@ -174,6 +196,14 @@ const AddVehicle = () => {
                     </button>
                 </div>
             </form>
+
+            { showQrReader && 
+                <CustomQrReader 
+                    showQrReader={ showQrReader }
+                    onClose={ () => setShowQrReader(false) }
+                    onError={ onError }
+                    onScan={ onScan } />
+            }
         </div>
     );
 }

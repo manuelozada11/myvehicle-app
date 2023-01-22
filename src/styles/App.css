@@ -217,7 +217,7 @@
 
 .qr-modal {
   background-color: rgb(240, 240, 240);
-  position: fixed;
+  position: absolute;
   top: calc(50% - 175px);
   left: calc(50% - 150px);
   height: 300px;
@@ -233,8 +233,23 @@
   align-items: center;
   justify-content: center;
   padding: 1.5rem;
-  width: 200px;
+  width: 230px;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.151);
   border: 1px solid rgb(182, 182, 182);
   border-radius: 0.8rem;
+}
+
+.qr-reader {
+  z-index: 6;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+}
+
+#flipCamera {
+  z-index: 99;
+  color: #fff;
+  position: absolute;
+  bottom: 13%;
+  right: 12%;
 }

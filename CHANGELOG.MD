@@ -1,5 +1,11 @@
 ## App Versions
 
+### (`1.11.0`) Jan 21, 2023
+1. Add new feature to add new car scanning qr code
+2. Bug fixed up when cancel vehicle transfer we was stayed sending requests
+3. Add translation for seconds in transfer vehicle
+4. Add translation for eror messages
+
 ### (`1.10.0`) Jan 18, 2023
 1. Add transfer vehicle to another account
 

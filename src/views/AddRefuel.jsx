@@ -45,7 +45,7 @@ const AddRefuel = () => {
         } catch (e) {
             // defaultCatcher(e);
 
-            return setError('Ocurrió un error, intenta de nuevo en unos minutos');
+            return setCustomError(translate("vehicle.api.error.wentWrong"));
         }
     }
 

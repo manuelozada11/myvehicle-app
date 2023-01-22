@@ -1,26 +1,25 @@
-import QrCode from "qrcode.react";
+import { QRCodeSVG } from "qrcode.react";
 import { translate } from "../common/utils";
 import "../styles/App.css";
 
-const CustomQrCode = ({ value, height= 150, width= 150, onClose, onAccept, confirmation, title= "-", subtitle= "-", qrSubtitle= "-" }) => {
+const CustomQrCode = ({ value, height= 180, width= 180, onClose, onAccept, confirmation, title= "-", subtitle= "-", qrSubtitle= "-" }) => {
     return (
         <>
             <div className="qr-background" onClick={ onClose }></div> 
-            <div className="qr-modal p-5 d-flex flex-column align-items-center">
+            <div className="qr-modal p-3 d-flex flex-column align-items-center">
             { 
                 !confirmation ?
-                    <div>
+                    <div className="mt-3">
                         <div className="qr-code">
-                            <QrCode
+                            <QRCodeSVG
                                 value={ value } 
-                                renderAs={'svg'}
                                 height={height}
                                 width={width} />
                         </div>
-                        <p className="mx-0 mb-0 mt-3 text-center">{ qrSubtitle }</p>
+                        <p className="mx-0 mb-0 mt-2 text-center text-muted">{ qrSubtitle }</p>
                     </div>
                 :
-                <div className="d-flex flex-column text-center">
+                <div className="d-flex pt-5 flex-column text-center">
                     <h5>{ title }</h5>
                     <div className="my-2">
                         <button className="btn btn-outline-primary rounded-pill m-2" onClick={ onAccept }>{ translate("vehicle.information.qrcode.accept") }</button>

@@ -8,7 +8,7 @@ import { FiAlertCircle } from 'react-icons/fi';
 import { IoTrashOutline, IoDocumentTextOutline } from 'react-icons/io5';
 import { RiGasStationFill, RiShareForwardLine, RiCalendarCheckLine } from 'react-icons/ri';
 import { useForm, Controller } from "react-hook-form";
-import { dateFormat, translate, getStorageValue } from "../common/utils";
+import { dateFormat, translate, getStorageValue, setStorageValue, removeItemStorage } from "../common/utils";
 import { VEHICLE_TYPE } from "../constants/vehicles";
 import CustomQrCode from "../components/CustomQrCode";
 import CarTitle from "../components/CarTitle";
@@ -50,11 +50,14 @@ const VehicleInfo = () => {
     }
 
     const handleIntervals = (intervalTimer, intervalId, timeoutId) => {
-        clearInterval(intervalTimer);
-        clearInterval(intervalId);
-        clearTimeout(timeoutId);
+        clearInterval(intervalTimer ?? JSON.parse(getStorageValue("intervalTimer")));
+        clearInterval(intervalId ?? JSON.parse(getStorageValue("intervalId")));
+        clearTimeout(timeoutId ?? JSON.parse(getStorageValue("timeoutId")));
         setTimer(30);
         setQrcode(false);
+        removeItemStorage("intervalTimer");
+        removeItemStorage("intervalId");
+        removeItemStorage("timeoutId");
     }
 
     const onDeleteCar = async (data) => {
@@ -67,7 +70,7 @@ const VehicleInfo = () => {
         } catch (e) {
             // defaultCatcher(e);
 
-            return setCustomError('Ocurrió un error, intenta de nuevo en unos minutos');
+            return setCustomError(translate("vehicle.api.error.wentWrong"));
         }
     }
 
@@ -90,7 +93,7 @@ const VehicleInfo = () => {
             setUpdate(!update);
         } catch (e) {
             // defaultCatcher(e);
-            return setCustomError('Ocurrió un error, intenta de nuevo en unos minutos');
+            return setCustomError(translate("vehicle.api.error.wentWrong"));
         }
     }
 
@@ -125,10 +128,13 @@ const VehicleInfo = () => {
             }, 2000);
 
             const timeoutId = setTimeout(() => handleIntervals(intervalTimer, intervalId, timeoutId), 30000);
+            setStorageValue("intervalTimer", JSON.stringify(intervalTimer));
+            setStorageValue("intervalId", JSON.stringify(intervalId));
+            setStorageValue("timeoutId", JSON.stringify(timeoutId));
         } catch (e) {
             // defaultCatcher(e);
-
-            return setCustomError('Ocurrió un error, intenta de nuevo en unos minutos');
+            
+            return setCustomError(translate("vehicle.api.error.wentWrong"));
         }
     }
 
@@ -410,8 +416,8 @@ const VehicleInfo = () => {
                     title={ translate("vehicle.information.transfer.title") }
                     subtitle={ translate("vehicle.information.transfer.subtitle") }
                     onAccept={ onTransfer }
-                    qrSubtitle={ `${ translate("vehicle.information.transfer.qrSubtitle") } ${ timer } secs` }
-                    onClose={ () => setQrcode(false) }
+                    qrSubtitle={ `${ translate("vehicle.information.transfer.qrSubtitle") } ${ timer } ${ translate("vehicle.information.transfer.secs") }` }
+                    onClose={ () => handleIntervals() }
                 />
             }
         </div>

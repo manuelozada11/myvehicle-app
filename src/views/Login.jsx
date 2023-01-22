@@ -22,7 +22,7 @@ const Login = () => {
 
             if (e.code === 404) return setError(e.message);
 
-            return setError('Ocurrió un error, intenta de nuevo en unos minutos');
+            return setError(translate("vehicle.api.error.wentWrong"));
         }
     }
 

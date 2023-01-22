@@ -40,6 +40,7 @@
     "vehicle.information.transfer.title": "¿Estás seguro que quieres transferir tu vehículo a otra cuenta?",
     "vehicle.information.transfer.subtitle": "No podrás revertir esta acción",
     "vehicle.information.transfer.qrSubtitle": "Sólo tienes ",
+    "vehicle.information.transfer.secs": "seg",
     "vehicle.information.qrcode.accept": "Aceptar",
     "vehicle.details.year": "Año",
     "vehicle.details.displacement": "Distancia recorrida",
@@ -60,5 +61,6 @@
     "vehicle.refuels.add.date": "Fecha",
     "vehicle.maintenance.home.quantity": "Cant. Mantenimientos",
     "vehicle.maintenance.home.battery": "Bateria",
-    "vehicle.maintenance.home.tires": "Llantas"
+    "vehicle.maintenance.home.tires": "Llantas",
+    "vehicle.api.error.wentWrong": "Ocurrió un error, intenta de nuevo en unos minutos"
 }

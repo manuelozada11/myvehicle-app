@@ -99,6 +99,22 @@ export const useVehicle = () => {
         if (response.status === 404) throw customError('No se encontro ningun vehiculo', 404);
         if (response.status === 500) throw customError('Error en el servidor', 500);
     }
+    
+    const getVehicleTransfered = async ({ _id, user }) => {
+        const response = await fetch(`${ getStorageValue('apiDomain') }/vehicles/transfer/${ _id }`, {
+            method: 'PATCH',
+            headers: {
+                "content-type": "application/json",
+                authorization: `Bearer ${ getStorageValue('token') }`
+            },
+            body: JSON.stringify(user)
+        });
+        
+        if (response.status === 203) throw customError('No tienes los permisos necesarios', 400);
+        if (response.status === 400) throw customError('Algo salio mal!', 400);
+        if (response.status === 404) throw customError('No se encontro ningun vehiculo', 404);
+        if (response.status === 500) throw customError('Error en el servidor', 500);
+    }
 
     return {
         createVehicle,
@@ -107,6 +123,7 @@ export const useVehicle = () => {
         getVehiclesById,
         getVehiclesInfoById,
         deleteCarById,
-        authorizateTransfer
+        authorizateTransfer,
+        getVehicleTransfered
     }
 }
