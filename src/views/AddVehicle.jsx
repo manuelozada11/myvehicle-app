@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useVehicle } from "../hooks/useVehicle";
 import { useForm } from "react-hook-form";
 import { firstLetterUppercase, translate } from "../common/utils";
+import { MdQrCodeScanner } from "react-icons/md";
 import CarTitle from "../components/CarTitle";
 
 const AddVehicle = () => {
@@ -41,7 +42,7 @@ const AddVehicle = () => {
             <div className="px-4 pt-4 pb-3 row mx-0">
                 <CarTitle
                     backTo="/user"
-                    title={translate("vehicle.add.title")}
+                    title={ <>{translate("vehicle.add.title")} <MdQrCodeScanner className="ms-2" /></>}
                     subtitle={translate("vehicle.add.subtitle")} />
             </div>
 

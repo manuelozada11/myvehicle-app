@@ -13,7 +13,7 @@ const CarTitle = ({ backTo, title, subtitle }) => {
     return (
         <>
             <div className="col-9 ps-0">
-                <h1 className="m-0 fw-bold">
+                <h1 className="m-0 fw-bold d-flex align-items-center">
                     { title ? title : (car.fullname ?? 'Name') }
                 </h1>
                 <p className="m-0">
