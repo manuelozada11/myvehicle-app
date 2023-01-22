@@ -8,7 +8,7 @@ import { FiAlertCircle } from 'react-icons/fi';
 import { IoTrashOutline, IoDocumentTextOutline } from 'react-icons/io5';
 import { RiGasStationFill, RiShareForwardLine, RiCalendarCheckLine } from 'react-icons/ri';
 import { useForm, Controller } from "react-hook-form";
-import { dateFormat, translate } from "../common/utils";
+import { dateFormat, translate, getStorageValue } from "../common/utils";
 import { VEHICLE_TYPE } from "../constants/vehicles";
 import CustomQrCode from "../components/CustomQrCode";
 import CarTitle from "../components/CarTitle";
@@ -17,13 +17,59 @@ const VehicleInfo = () => {
     let navigate = useNavigate();
     const { register, handleSubmit, control, formState: { errors }, reset } = useForm();
     const { _id } = useParams();
-    const { getVehiclesById, updateCarById, deleteCarById } = useVehicle();
+    const { getVehiclesById, updateCarById, deleteCarById, authorizateTransfer } = useVehicle();
     const [car, setCar] = useState(null);
     const [edit, setEdit] = useState(false);
     const [update, setUpdate] = useState(false);
     const [error, setCustomError] = useState(null);
     const [confirm, setConfirm] = useState(false);
     const [qrcode, setQrcode] = useState(false);
+    const [confirmTransfer, setConfirmTransfer] = useState(true);
+    const [timer, setTimer] = useState(30);
+
+    const handleDate = (date) => {
+        const now = new Date().getTime();
+        const insurance = new Date(date).getTime();
+
+        if (now > insurance) return 'danger';
+
+        return 'success';
+    }
+
+    const handleTypeOption = () => {
+        return VEHICLE_TYPE.map((option, i) => {
+            return (
+                <option 
+                    key={ `${option.value}${i}`} 
+                    defaultValue={ car?.vehicleType === option.value ? true : false } 
+                    value={ option.value }>
+                    { option.name }
+                </option>
+            );
+        })
+    }
+
+    const handleIntervals = (intervalTimer, intervalId, timeoutId) => {
+        clearInterval(intervalTimer);
+        clearInterval(intervalId);
+        clearTimeout(timeoutId);
+        setTimer(30);
+        setQrcode(false);
+    }
+
+    const onDeleteCar = async (data) => {
+        try {
+            if (data.delete !== car.plateNumber) return setCustomError('La placa no coincide');
+
+            await deleteCarById({ _id });
+
+            navigate(`/user`);
+        } catch (e) {
+            // defaultCatcher(e);
+
+            return setCustomError('Ocurrió un error, intenta de nuevo en unos minutos');
+        }
+    }
 
     const onEditCar = async (data) => {
         try {
@@ -55,35 +101,30 @@ const VehicleInfo = () => {
         setConfirm(false);
     }
 
-    const handleDate = (date) => {
-        const now = new Date().getTime();
-        const insurance = new Date(date).getTime();
-
-        if (now > insurance) return 'danger';
-
-        return 'success';
-    }
-
-    const handleTypeOption = () => {
-        return VEHICLE_TYPE.map((option, i) => {
-            return (
-                <option 
-                    key={ `${option.value}${i}`} 
-                    defaultValue={ car?.vehicleType === option.value ? true : false } 
-                    value={ option.value }>
-                    { option.name }
-                </option>
-            );
-        })
-    }
-
-    const onDeleteCar = async (data) => {
+    const onTransfer = async () => {
         try {
-            if (data.delete !== car.plateNumber) return setCustomError('La placa no coincide');
+            const _userId = getStorageValue("user")?._id;
+            setConfirmTransfer(false);
+            await authorizateTransfer({ _id });
 
-            await deleteCarById({ _id });
+            const intervalTimer = setInterval(() => setTimer(oldTimer => oldTimer -1), 1000);
 
-            navigate(`/user`);
+            const intervalId = setInterval(async () => {
+                console.log('requesting to API...');
+                try {
+                    const car = await getVehiclesById({ _id });
+                    if (car?.user._id !== _userId) {
+                        console.log("car was transfered");
+                        handleIntervals(intervalTimer, intervalId, timeoutId);
+                        navigate(`/user`);
+                    }
+                } catch (e) {
+                    handleIntervals(intervalTimer, intervalId, timeoutId);
+                    setCustomError("Algo salió mal!");
+                }
+            }, 2000);
+
+            const timeoutId = setTimeout(() => handleIntervals(intervalTimer, intervalId, timeoutId), 30000);
         } catch (e) {
             // defaultCatcher(e);
 
@@ -110,7 +151,7 @@ const VehicleInfo = () => {
             </div>
             
             <div className="d-flex justify-content-center">
-                <button type="button" onClick={ () => setQrcode(true) } className="p-2 btn rounded-circle btn-outline-danger m-2"><RiShareForwardLine size={ 30 } /></button>
+                <button type="button" onClick={ () => { setConfirmTransfer(true); setQrcode(true); } } className="p-2 btn rounded-circle btn-outline-danger m-2"><RiShareForwardLine size={ 30 } /></button>
                 {/* { !confirm && <button type="button" onClick={ () => setConfirm(true) } className="p-2 btn rounded-circle btn-outline-danger m-2"><IoTrashOutline size={ 27 } /></button> } */}
             </div>
             
@@ -364,7 +405,12 @@ const VehicleInfo = () => {
             
             { qrcode &&
                 <CustomQrCode 
-                    value={ `${ car?._id }/${ 1 }` }
+                    value={ `${ car?._id }//${ getStorageValue("token") }` }
+                    confirmation={ confirmTransfer }
+                    title={ translate("vehicle.information.transfer.title") }
+                    subtitle={ translate("vehicle.information.transfer.subtitle") }
+                    onAccept={ onTransfer }
+                    qrSubtitle={ `${ translate("vehicle.information.transfer.qrSubtitle") } ${ timer } secs` }
                     onClose={ () => setQrcode(false) }
                 />
             }
