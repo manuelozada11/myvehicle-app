@@ -50,8 +50,14 @@ const MaintenanceHome = () => {
                     <div className="col-12 p-2">
                         <div className="card-stat h-100">
                             <div className="w-60 d-flex flex-row">
-                                <h5 className="m-0 d-flex align-items-center fw-bold me-5"><BsCalendarX size={25} className="me-2" /> {stats ? dateFormat(stats.lastMaintenanceDate).split(",")[0] : "-"}</h5>
-                                <h5 className="m-0 d-flex align-items-center fw-bold"><BsCalendar2Check size={25} className="me-2" /> {stats ? dateFormat(stats.nextMaintenanceDate).split(",")[0] : "-"}</h5>
+                                <h5 className="m-0 d-flex align-items-center fw-bold me-5">
+                                    <BsCalendarX size={25} className="me-2" /> 
+                                    {stats?.lastMaintenanceDate ? dateFormat(stats.lastMaintenanceDate).split(",")[0] : "-"}
+                                </h5>
+                                <h5 className="m-0 d-flex align-items-center fw-bold">
+                                    <BsCalendar2Check size={25} className="me-2" /> 
+                                    {stats?.nextMaintenanceDate ? dateFormat(stats.nextMaintenanceDate).split(",")[0] : "-"}
+                                </h5>
                             </div>
                         </div>
                     </div>
@@ -61,16 +67,19 @@ const MaintenanceHome = () => {
                             <p className="m-0">{translate("vehicle.refuels.spent")}</p>
                             <div className="d-flex flex-row">
                                 <AiOutlineDollar size={27} className="me-1" />
-                                <h4 className="m-0 fw-bold d-flex align-items-center">{ stats ? stats.spentMonthly : "0.00" }</h4>
+                                <h4 className="m-0 fw-bold d-flex align-items-center">
+                                    { stats?.spentMonthly ? stats.spentMonthly : "0.00" }
+                                </h4>
                             </div>
                         </div>
                     </div>
                     
                     <div className="col-6 p-2">
-                        {/* <div className="card-stat h-100" onClick={() => navigate(`/maintenance/add/${ _id }`)}> */}
-                        <div className="card-stat h-100">
+                        <div className="card-stat h-100" onClick={() => navigate(`/maintenance/add/general/${ _id }`)}>
                             <p className="m-0">{translate("vehicle.maintenance.home.quantity")}</p>
-                            <h4 className="m-0 fw-bold">{ stats ? stats.quantity : "0" }</h4>
+                            <h4 className="m-0 fw-bold">
+                                { stats?.quantity ? stats.quantity : "0" }
+                            </h4>
                         </div>
                     </div>
 
@@ -81,22 +90,26 @@ const MaintenanceHome = () => {
                     </div>
 
                     <div className="col-6 p-2">
-                        <div className="card-stat h-100">
+                        <div className="card-stat h-100" onClick={ () => navigate(`/maintenance/add/battery/${ _id }`) }>
                             <div className="d-flex flex-row">
                                 <BsBatteryFull size={24} className="me-2" />
                                 <p className="m-0">{translate("vehicle.maintenance.home.battery")}</p>
                             </div>
-                            <h5 className="m-0 fw-bold">{stats?.batteryDate ? dateFormat(stats.batteryDate).split(",")[0] : "-"}</h5>
+                            <h5 className="m-0 fw-bold">
+                                {stats?.batteryDate ? dateFormat(stats.batteryDate).split(",")[0] : "-"}
+                            </h5>
                         </div>
                     </div>
                     
                     <div className="col-6 p-2">
-                        <div className="card-stat-gray h-100">
+                        <div className="card-stat-gray h-100" onClick={ () => navigate(`/maintenance/add/tires/${ _id }`) }>
                             <div className="d-flex flex-row">
                                 <BsCalendarMinus size={22} className="me-2" />
                                 <p className="m-0">{translate("vehicle.maintenance.home.tires")}</p>
                             </div>
-                            <h5 className="m-0 fw-bold">{stats?.tiresDate ? dateFormat(stats.tiresDate).split(",")[0] : "-"}</h5>
+                            <h5 className="m-0 fw-bold">
+                                {stats?.tiresDate ? dateFormat(stats.tiresDate).split(",")[0] : "-"}
+                            </h5>
                         </div>
                     </div>
                     </>

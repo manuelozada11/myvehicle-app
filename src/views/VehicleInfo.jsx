@@ -86,11 +86,11 @@ const VehicleInfo = () => {
             data.passengers = Number(data.passengers);
             data.displacement = Number(data.displacement);
 
-            await updateCarById({ _id, ...data });
-
             setCar(null);
             setEdit(false);
             setUpdate(!update);
+
+            await updateCarById({ _id, ...data });
         } catch (e) {
             // defaultCatcher(e);
             return setCustomError(translate("vehicle.api.error.wentWrong"));
@@ -142,6 +142,13 @@ const VehicleInfo = () => {
         const getVehicle = async () => {
             try {
                 const car = await getVehiclesById({ _id });
+                setStorageValue('vehicle', {
+                    fullname: `${ car?.manufacture } ${ car?.model }`,
+                    plateNumber: car?.plateNumber ?? "-",
+                    user: car.user,
+                    _id: car._id
+                });
+                setUpdate(!update);
                 setCar(car);
             } catch (e) {
                 setCar({});
@@ -153,7 +160,7 @@ const VehicleInfo = () => {
     return (
         <div className="container-fluid px-0">
             <div className="px-4 pt-4 pb-3 row mx-0">
-                <CarTitle backTo={ `/vehicle/${ _id }` } />
+                <CarTitle backTo={ `/vehicle/${ _id }` } update={ update } />
             </div>
             
             <div className="d-flex justify-content-center">
@@ -167,7 +174,8 @@ const VehicleInfo = () => {
                     <p className="mb-1">{translate("vehicle.details.delete.title1")} <span className="fst-italic fw-bold">{ (car?.hasOwnProperty('plateNumber') ? `${ car.plateNumber }` : '') }</span> {translate("vehicle.details.delete.title2")}</p>
                     <input type="text" 
                         {...register("delete", { required: true })}
-                        className={ `mb-2 form-control form-control-sm rounded-pill shadow-sm ${ errors.delete ? 'is-invalid' : '' }` } />
+                        className={ `mb-2 form-control form-control-sm rounded-pill shadow-sm ${ errors.delete ? 'is-invalid' : '' }` }
+                    />
 
                     <div className="row mx-0">
                         <button type="button" onClick={ onCancel } className="my-2 btn btn-block btn-sm btn-danger rounded-pill">{translate("vehicle.details.cancel")}</button>
@@ -198,7 +206,7 @@ const VehicleInfo = () => {
                                         showTimeSelect
                                         onChange={ onChange }
                                         onBlur={ onBlur }
-                                        selected={ value ? value : (new Date(car?.boughtDate) ?? new Date()) }
+                                        selected={ value ? value : (car?.boughtDate ? new Date(car.boughtDate) : new Date()) }
                                         className={ `mb-2 form-control form-control-sm rounded-pill shadow-sm ${ errors.boughtDate ? 'is-invalid' : '' }` }
                                     />
                                 )}
@@ -261,7 +269,7 @@ const VehicleInfo = () => {
                                             showTimeSelect
                                             onChange={ onChange }
                                             onBlur={ onBlur }
-                                            selected={ value ? value : (new Date(car.insuranceDate) ?? new Date()) }
+                                            selected={ value ? value : (car?.insuranceDate ? new Date(car.insuranceDate) : new Date()) }
                                             className={ `mb-2 form-control form-control-sm rounded-pill shadow-sm ${ errors.insuranceDate ? 'is-invalid' : '' }` }
                                         />
                                     )}
@@ -281,7 +289,7 @@ const VehicleInfo = () => {
                                             showTimeSelect
                                             onChange={ onChange }
                                             onBlur={ onBlur }
-                                            selected={ value ? value : (new Date(car?.taxesDate) ?? new Date()) }
+                                            selected={ value ? value : (car?.taxesDate ? new Date(car.taxesDate) : new Date()) }
                                             className={ `mb-2 form-control form-control-sm rounded-pill shadow-sm ${ errors.taxesDate ? 'is-invalid' : '' }` }
                                         />
                                     )}

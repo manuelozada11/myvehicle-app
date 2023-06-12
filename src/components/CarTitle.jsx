@@ -3,8 +3,8 @@ import { getStorageValue } from "../common/utils";
 import BackButton from "../components/BackButton";
 
 const CarTitle = ({ backTo, title, subtitle }) => {
-    let navigate = useNavigate();
     const car = getStorageValue('vehicle');
+    let navigate = useNavigate();
     
     const onGoBack = () => {
         navigate(backTo);
@@ -14,10 +14,10 @@ const CarTitle = ({ backTo, title, subtitle }) => {
         <>
             <div className="col-9 ps-0">
                 <h1 className="m-0 fw-bold d-flex align-items-center">
-                    { title ? title : (car.fullname ?? 'Name') }
+                    { title ? title : (car?.fullname ?? 'Name') }
                 </h1>
                 <p className="m-0">
-                    { subtitle ? subtitle : (car.plateNumber ?? 'Last Name') }
+                    { subtitle ? subtitle : (car?.plateNumber ?? 'Last Name') }
                 </p>
             </div>
 

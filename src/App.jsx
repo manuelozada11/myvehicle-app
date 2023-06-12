@@ -11,6 +11,7 @@ import Refuels from './views/Refuels';
 import AddRefuel from './views/AddRefuel';
 import VehicleInfo from './views/VehicleInfo';
 import MaintenanceHome from './views/MaintenanceHome';
+import AddMaintenance from './views/AddMaintenance';
 // views
 import Home from './views/Home';
 import Login from './views/Login';
@@ -90,6 +91,12 @@ const App = () => {
                 <MaintenanceHome />
               </PrivateRoute>
             }/>
+
+            <Route path='add/:type/:_id' element={
+              <PrivateRoute>
+                <AddMaintenance />
+              </PrivateRoute>
+            } />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -60,7 +60,12 @@
     "vehicle.refuels.add.displacement": "Km",
     "vehicle.refuels.add.date": "Fecha",
     "vehicle.maintenance.home.quantity": "Cant. Mantenimientos",
+    "vehicle.maintenance.home.general": "General",
     "vehicle.maintenance.home.battery": "Bateria",
     "vehicle.maintenance.home.tires": "Llantas",
+    "vehicle.maintenance.add.section": "Mantenimientos",
+    "vehicle.maintenance.add.tires.stats1": "Cant. Cambios",
+    "vehicle.maintenance.add.battery.stats1": "Cant. Cambios",
+    "vehicle.maintenance.add.general.stats1": "Cant. Mant.",
     "vehicle.api.error.wentWrong": "Ocurrió un error, intenta de nuevo en unos minutos"
 }

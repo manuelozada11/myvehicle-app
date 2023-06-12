@@ -60,7 +60,12 @@
     "vehicle.refuels.add.displacement": "Km",
     "vehicle.refuels.add.date": "Date",
     "vehicle.maintenance.home.quantity": "Maintenance Qty.",
+    "vehicle.maintenance.home.general": "General",
     "vehicle.maintenance.home.battery": "Battery",
     "vehicle.maintenance.home.tires": "Tires",
+    "vehicle.maintenance.add.section": "Maintenances",
+    "vehicle.maintenance.add.tires.stats1": "Times changed",
+    "vehicle.maintenance.add.battery.stats1": "Times changed",
+    "vehicle.maintenance.add.general.stats1": "Maint. Qty.",
     "vehicle.api.error.wentWrong": "Something went wrong, try it again in a few minutes"
 }
