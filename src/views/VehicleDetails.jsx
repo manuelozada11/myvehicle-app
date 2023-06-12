@@ -36,7 +36,7 @@ const VehicleDetails = () => {
             </div>
 
             <div className="d-flex justify-content-center">
-                <button type="button" onClick={ () => navigate(`/maintenance/v/${ _id }`) } className="p-2 btn rounded-circle btn-outline-primary m-2"><BsTools size={ 27 } /></button>
+                {/* <button type="button" onClick={ () => navigate(`/maintenance/v/${ _id }`) } className="p-2 btn rounded-circle btn-outline-primary m-2"><BsTools size={ 27 } /></button> */}
                 <button type="button" onClick={ () => navigate(`/refuels/v/${ _id }`) } className="p-2 btn rounded-circle btn-outline-primary m-2"><RiGasStationFill size={ 30 } /></button>
                 <button type="button" onClick={ () => navigate(`/vehicle/info/${ _id }`) } className="p-2 btn rounded-circle btn-outline-primary m-2"><IoDocumentTextOutline size={ 27 } /></button>
                 {/* <button type="button" onClick={ () => setQrcode(true) } className="p-2 btn rounded-circle btn-outline-primary m-2"><RiShareForwardLine size={ 30 } /></button> */}
