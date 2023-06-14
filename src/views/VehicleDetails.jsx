@@ -30,7 +30,7 @@ const VehicleDetails = () => {
     }, []);
 
     return (
-        <div className="container-fluid px-0">
+        <div className="container-fluid main-container px-0">
             <div className="px-4 pt-4 pb-3 row mx-0">
                 <CarTitle backTo={ '/user' } />
             </div>

@@ -253,3 +253,7 @@
   bottom: 13%;
   right: 12%;
 }
+
+.main-container {
+  max-width: 800px;
+}

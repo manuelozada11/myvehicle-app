@@ -32,7 +32,7 @@ const Login = () => {
     }
 
     return (
-        <div className="container-fluid p-0 text-center">
+        <div className="container-fluid main-container p-0 text-center">
             <div style={{ borderRadius: '1.5rem', backgroundColor: "#293331e3", color: "#2b2b2b" }}
                 className="p-5 m-3 text-center shadow">
                 <h1 className="font-bebas text-light" style={{ fontSize: '3rem' }}>

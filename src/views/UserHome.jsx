@@ -55,7 +55,7 @@ const UserHome = () => {
     }, []);
 
     return (
-        <div className="container-fluid px-0">
+        <div className="container-fluid main-container px-0">
             <div className="px-4 py-2">
                 <p className="mb-2 mt-3">{ translate("users.home.subtitle") }, { user ? firstLetterUppercase(user.name) : 'user' }!</p>
                 <h1 className="fw-bolder">{ translate("users.home.title") }</h1>
