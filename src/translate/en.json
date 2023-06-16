@@ -12,6 +12,7 @@
     "users.home.subtitle": "Hey",
     "users.home.button.add": "Add",
     "users.home.button.signout": "Exit",
+    "users.home.nocars": "You don't have any registered vehicles",
     "users.signin.title.sign": "SIGN",
     "users.signin.title.in": "IN",
     "users.signin.user": "Username",

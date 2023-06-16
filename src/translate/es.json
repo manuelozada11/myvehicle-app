@@ -12,6 +12,7 @@
     "users.home.subtitle": "Hola",
     "users.home.button.add": "Agregar",
     "users.home.button.signout": "Salir",
+    "users.home.nocars": "No tienes vehiculos registrados",
     "users.signin.title.sign": "INICIAR",
     "users.signin.title.in": "SESIÓN",
     "users.signin.user": "Usuario",

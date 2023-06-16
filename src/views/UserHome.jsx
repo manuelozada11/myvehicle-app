@@ -29,7 +29,7 @@ const UserHome = () => {
     }
 
     const handleCars = () => {
-        if (cars?.length <= 0) return <div className="d-flex justify-content-center p-3">No tienes vehiculos registrados :(</div>
+        if (cars?.length <= 0) return <div className="d-flex justify-content-center p-3">{translate('users.home.nocars')} :(</div>
 
         return (
             cars.map(car => 
