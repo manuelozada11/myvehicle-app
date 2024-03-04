@@ -1,5 +1,8 @@
 ## App Versions
 
+### (`1.11.1`) Mar 3, 2024
+1. Error getting Bebas Neue font was fixed up.
+
 ### (`1.11.0`) Jun 11, 2023
 1. Add new feature to add new car scanning qr code
 2. Bug fixed up when cancel vehicle transfer we was stayed sending requests
